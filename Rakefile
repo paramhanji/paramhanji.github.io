@@ -69,7 +69,7 @@ namespace :build do
     puts "\n## Building Jekyll to _site/"
     status = system("jekyll build")
     puts status ? "Success" : "Failed"
-    Rake::Task["minify"].invoke
+    # Rake::Task["minify"].invoke
   end
 end
 
