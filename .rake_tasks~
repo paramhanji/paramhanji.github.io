@@ -1,0 +1,9 @@
+build:dev
+build:pro
+commit
+commit_deploy
+delete
+deploy
+minify
+preview
+recompile_sass
