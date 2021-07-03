@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="I wrote this to improve my understanding of a new class of deep generative models called denoising diffusion probabilistic models (DDPM). I read about them while preparing to present to my colleagues at our weekly Rainbow ML reading group. I spent more time than I routinely do since the procedure described and derivations were not trivial to follow. Moreover, a detailed explanation can only be found in a handful of involved papers (Ho et al., 2020; Sohl-Dickstein et al., 2015). So I hope this post will provide a general understanding to a broader audience.">
+  <meta property="og:description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.">
 
 
 
@@ -252,7 +252,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Denoising diffusion probabilistic models">
-    <meta itemprop="description" content="I wrote this to improve my understanding of a new class of deep generative models called denoising diffusion probabilistic models (DDPM). I read about them while preparing to present to my colleagues at our weekly Rainbow ML reading group. I spent more time than I routinely do since the procedure described and derivations were not trivial to follow. Moreover, a detailed explanation can only be found in a handful of involved papers (Ho et al., 2020; Sohl-Dickstein et al., 2015). So I hope this post will provide a general understanding to a broader audience.">
+    <meta itemprop="description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.">
     <meta itemprop="datePublished" content="June 30, 2021">
     
 
@@ -266,7 +266,7 @@
 
 
   
-	  9 minute read
+	  11 minute read
 	
 </p>
           
@@ -283,12 +283,9 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>I wrote this to improve my understanding of a new class of deep generative models called denoising diffusion probabilistic models (DDPM). I read about them while preparing to present to my colleagues at our weekly <a href="https://www.cl.cam.ac.uk/research/rainbow/readingclub/">Rainbow ML reading group</a>. I spent more time than I routinely do since the procedure described and derivations were not trivial to follow. Moreover, a detailed explanation can only be found in a handful of involved papers <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Sohl-Dickstein et al., 2015)</a>. So I hope this post will provide a general understanding to a broader audience.</p>
+        <p>The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.</p>
 
-<h2 id="state-of-the-art-generative-modeling">State-of-the-art generative modeling</h2>
-<p>The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. I have excluded a few architectures such as autoregressive ones and those based on transformers since they are much slower to sample from, especially when the distribution to be modeled is high-dimensional.</p>
-
-<p>In the first half of 2021, a few papers popped up on arXiv claiming that a new method, motivated by non-equilibrium statistical physics <a class="citation" href="#sohl2015deep">(Sohl-Dickstein et al., 2015)</a>, achieved sample qualities better than contemporary state-of-the-art models. Here are some teasers from these papers,</p>
+<p>In the first half of 2021, a few papers popped up on arXiv claiming that a new method, motivated by non-equilibrium statistical physics <a class="citation" href="#sohl2015deep">(Sohl-Dickstein et al., 2015)</a>, achieved sample qualities better than contemporary state-of-the-art models. Here are some generated samples taken directly from these papers.</p>
 
 <table>
   <thead>
@@ -305,19 +302,24 @@
   </tbody>
 </table>
 
+<p>I read about denoising diffusion probabilistic models (DDPM) while preparing to present to my colleagues at our weekly <a href="https://www.cl.cam.ac.uk/research/rainbow/readingclub/">Rainbow ML reading group</a>. I spent more time than I routinely do since the procedure described and derivations were not easy to follow. Moreover, a detailed explanation can only be found in a handful of involved papers <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Sohl-Dickstein et al., 2015)</a>. So I hope this post will provide a general understanding to a broader audience.</p>
+
 <h2 id="high-level-overview">High-level overview</h2>
-<p>Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents denoted \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), using a model parameterized by \(\theta\),</p>
+<p>Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents denoted \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), with a model parameterized by \(\theta\),</p>
 
-\[p_\theta(\boldsymbol{x}) = \int p_\theta(\boldsymbol{x}_{0:T})\,d\boldsymbol{x}_{1:T}\]
+\[\begin{aligned}
+  p_\theta(\boldsymbol{x}) &amp;= \int p_\theta(\boldsymbol{x}_{0:T}) \, d\boldsymbol{x}_{1:T} \\
+  &amp;= p_\theta(\boldsymbol{x}_T) \prod \limits_{t=1}^T p\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) \, d\boldsymbol{x}_{1:T}\,
+\end{aligned}\]
 
-<p>Using a Markov chain with the following probabilistic graphical model (PGM), we can easily factorize the joint distribution.</p>
+<p>where the factorization of the joint distribution is possible since the model is given by the following Markov chain.</p>
 
 <figure class="image">
   <img src="/files/images/ddpm/pgm.png" alt="Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles." />
   <figcaption>Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles.</figcaption>
 </figure>
 
-<p>To optimize our parametric model, we will use variational inference. However, applying it for diffusion models looks a little convoluted at first glance. We will see how to start with the objective of minimizing a divergence between the approximate and true posterior and pry out the evidence lower bound (ELBO). Before jumping into this procedure, here is a brief outline of how variational inference is typically carried out.</p>
+<p>To optimize our parametric model, we would like to compute the exact marginal likelihood and maximize it. Unfortunately, the exact likelihood (given by the above integral) is not tractable and we are forced to resort to a variational approximation. During my first pass of a DDPM paper <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021)</a>, I found this part particularly hard to follow and was forced to backtrack and read some earlier works. In this post, we will see how to start with the objective of minimizing a divergence between the approximate and true posterior and pry out the evidence lower bound (ELBO). This is of course, variational inference and just in case you need a reminder (or are hearing about it for the first time), here is a brief outline of how it is typically carried out.</p>
 
 <h2 id="a-primer-on-variational-inference">A primer on variational inference</h2>
 <p>The forward model is often quite simple, consisting of a single latent and a single observed variable. Again, here is the graphical model,</p>
@@ -331,30 +333,32 @@
 
 \[\textrm{ELBO} = \mathbb{E}_{\boldsymbol{z} \sim q_\phi(\boldsymbol{z} \vert \boldsymbol{x})} \left[\log{p(\boldsymbol{x} \vert \boldsymbol{z})} - D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\,||\,p(\boldsymbol{z}))\right]\,.\]
 
-<p>The analogy I like to work with is trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. The only thing left to do is assign a mapping between certain mental states and certain observed behaviors, a process that is roughly equivalent to learning model parameters from data.</p>
+<p>To better understand what is happening, an analogy I like using is that of trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. However it is important to note that these are approximations at best. The only thing left to do is assign a mapping between certain mental states and certain observed behaviors, a process that is roughly equivalent to learning model parameters from data. We <em>learn to infer</em> that when a cat sits on our keyboards, it might be craving attention or that a dog wagging its tail is probably happy.</p>
+
+<p>I did not want to detail the derivation of obtaining the ELBO for the simple model described above since you can find several lecture notes and blog posts on it. Feel free to refer to them before reading on. In the rest of this post, I will elucidate how to do so for diffusion models.</p>
 
 <h2 id="forward-diffusion-process">Forward diffusion process</h2>
-<p>DDPM papers flip the “direction” to better motivate the diffusion process. As a result, this is the picture you will see in most related work:</p>
+<p>DDPM papers flip the <em>“direction”</em> to better motivate the diffusion process. As a result, this is the picture you will see in most related work:</p>
 
 <figure class="image">
-  <img src="/files/images/ddpm/ddpm.png" alt="The forward (above) and reverse (below) diffusion processes." />
-  <figcaption>The forward (above) and reverse (below) diffusion processes.</figcaption>
+  <img src="/files/images/ddpm/ddpm.png" alt="The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes." />
+  <figcaption>The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes.</figcaption>
 </figure>
 
-<p>Here, the forward or <em>diffusion</em> process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\), which is a well-defined process given by</p>
+<p>The forward process involves starting with an image taken from the training set and degrading it by iteratively adding a little bit of noise. The exact distribution of noise is known beforehand. After infinite iterations, all information in the image is completely lost and we are left with random noise. Formally, the forward <em>diffusion</em> process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\), which is a well-defined process given by</p>
 
 \[q(\boldsymbol{x}_t \vert \boldsymbol{x}_{t-1}) = \mathcal{N}(\boldsymbol{x}_t;\, \sqrt{1 - \beta_t}\boldsymbol{x}_{t-1}, \beta_t \mathbf{I}) \,.\]
 
-<p>Here \(\beta_t\) is provided by a predetermined variance schedule. After an infinite number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, <a class="citation" href="#nichol2021improved">(Nichol &amp; Dhariwal, 2021)</a> show that between 1000 and 4000 steps are sufficient.</p>
+<p>Here \(\beta_t\) is provided by a predetermined variance schedule. After a large number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, <a class="citation" href="#nichol2021improved">(Nichol &amp; Dhariwal, 2021)</a> show that between 1000 and 4000 steps are sufficient even for a the complex distribution of ImageNet.</p>
 
 <h2 id="reverse-diffusion-process">Reverse diffusion process</h2>
-<p>The reverse process of generating a new sample is given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\), which requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. The forward process takes as input a slightly noisy image and adds a small amount of additional noise. The reverse is then the process of inverting this operation—estimating and removing the noise added in this diffusion step, a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.</p>
+<p>The reverse process of generating a new sample is given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\), which requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. While the forward process takes as input a slightly noisy image and adds a small amount of additional noise, the reverse inverts this operation. It should be obvious that estimating and removing the noise added in a diffusion step is a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available before training since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.</p>
 
-<p>The choice of the forward diffusion operation, however, ensures that the posterior of each step is Gaussian, enabling us to easily approximate it. The Gaussian has only two parameters that need to be estimated using a model parameterized by \(\theta\),</p>
+<p>The choice of the forward diffusion operation, however, ensures that the posterior of each step is Gaussian, enabling us to easily approximate it. The Gaussian has only two parameters that need to be estimated and we do so with a model parameterized by \(\theta\),</p>
 
-\[p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) \sim \mathcal{N}(\boldsymbol{x}_t;\, \boldsymbol{\mu}_\theta(\boldsymbol{x}_t, t), \boldsymbol{\Sigma}_\theta(\boldsymbol{x}_t))\]
+\[p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) = \mathcal{N}(\boldsymbol{x}_t;\, \boldsymbol{\mu}_\theta(\boldsymbol{x}_t, t), \boldsymbol{\Sigma}_\theta(\boldsymbol{x}_t))\]
 
-<p>This description is slightly different from the typical variational inference setup where an approximate model is used to obtain latents given the data. Here, the approximate model provides the data given the latents. The procedure remains the same—obtain a lower bound on the marginal log-likelihood of the data and update the parameters of a model to maximize it.</p>
+<p>This description is slightly different from the typical variational inference setup where an approximate model is used to obtain <em>latents given the data</em>. Here, the approximate model provides <em>the data given the latents</em>. The procedure remains the same—obtain a lower bound on the marginal log-likelihood of the data and update the parameters of a model to maximize it.</p>
 
 <h2 id="evidence-lower-bound">Evidence lower bound</h2>
 <p>Generally, latent variable models approximate the posterior of the latents, \(p(\boldsymbol{x}_{1:T}|\boldsymbol{x}_0)\) with a parameterized function. However, as we saw in the previous section, this approximation is predetermined when using diffusion methods. Instead, we learn the inversion of this process, \(p_\theta(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})\) using the ELBO. Pay attention to the fact that the parameterization is now on the generative probability while the “approximate” posterior probability is well-defined due to diffusion. To derive the ELBO, we start with the objective of minimizing the KL-divergence between the approximate and true posteriors,</p>
@@ -385,10 +389,10 @@
 </ul>
 
 <h2 id="references">References</h2>
-<ol class="bibliography"><li><span id="ho2020denoising">Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising diffusion probabilistic models. <i>ArXiv Preprint ArXiv:2006.11239</i>.</span></li>
-<li><span id="sohl2015deep">Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., &amp; Ganguli, S. (2015). Deep unsupervised learning using nonequilibrium thermodynamics. <i>International Conference on Machine Learning</i>, 2256–2265.</span></li>
+<ol class="bibliography"><li><span id="sohl2015deep">Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., &amp; Ganguli, S. (2015). Deep unsupervised learning using nonequilibrium thermodynamics. <i>International Conference on Machine Learning</i>, 2256–2265.</span></li>
 <li><span id="dhariwal2021diffusion">Dhariwal, P., &amp; Nichol, A. (2021). Diffusion models beat gans on image synthesis. <i>ArXiv Preprint ArXiv:2105.05233</i>.</span></li>
 <li><span id="luo2021diffusion">Luo, S., &amp; Hu, W. (2021). Diffusion probabilistic models for 3d point cloud generation. <i>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</i>, 2837–2845.</span></li>
+<li><span id="ho2020denoising">Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising diffusion probabilistic models. <i>ArXiv Preprint ArXiv:2006.11239</i>.</span></li>
 <li><span id="nichol2021improved">Nichol, A., &amp; Dhariwal, P. (2021). Improved denoising diffusion probabilistic models. <i>ArXiv Preprint ArXiv:2102.09672</i>.</span></li>
 <li><span id="song2020denoising">Song, J., Meng, C., &amp; Ermon, S. (2020). Denoising diffusion implicit models. <i>ArXiv Preprint ArXiv:2010.02502</i>.</span></li></ol>
 
