@@ -32,12 +32,12 @@
 <meta property="og:title" content="Denoising diffusion probabilistic models">
 
 
-  <link rel="canonical" href="https://paramhanji.github.io/posts/2021/06/ddpm/">
-  <meta property="og:url" content="https://paramhanji.github.io/posts/2021/06/ddpm/">
+  <link rel="canonical" href="http://localhost:4000/posts/2021/06/ddpm/">
+  <meta property="og:url" content="http://localhost:4000/posts/2021/06/ddpm/">
 
 
 
-  <meta property="og:description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.">
+  <meta property="og:description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.">
 
 
 
@@ -66,7 +66,7 @@
       "@context" : "http://schema.org",
       "@type" : "Person",
       "name" : "Param Hanji",
-      "url" : "https://paramhanji.github.io",
+      "url" : "http://localhost:4000",
       "sameAs" : null
     }
   </script>
@@ -79,7 +79,7 @@
 <!-- end SEO -->
 
 
-<link href="https://paramhanji.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Param Hanji Feed">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Param Hanji Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -91,34 +91,34 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="https://paramhanji.github.io/assets/css/main.css">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
     
 
 <!-- start custom head snippets -->
 
-<link rel="apple-touch-icon" sizes="57x57" href="https://paramhanji.github.io/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="60x60" href="https://paramhanji.github.io/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="72x72" href="https://paramhanji.github.io/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="76x76" href="https://paramhanji.github.io/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="114x114" href="https://paramhanji.github.io/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="120x120" href="https://paramhanji.github.io/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="144x144" href="https://paramhanji.github.io/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="152x152" href="https://paramhanji.github.io/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
-<link rel="apple-touch-icon" sizes="180x180" href="https://paramhanji.github.io/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
-<link rel="icon" type="image/png" href="https://paramhanji.github.io/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
-<link rel="icon" type="image/png" href="https://paramhanji.github.io/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
-<link rel="icon" type="image/png" href="https://paramhanji.github.io/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
-<link rel="icon" type="image/png" href="https://paramhanji.github.io/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
-<link rel="manifest" href="https://paramhanji.github.io/images/manifest.json?v=M44lzPylqQ">
-<link rel="mask-icon" href="https://paramhanji.github.io/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
 <link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
 <meta name="msapplication-TileColor" content="#000000">
-<meta name="msapplication-TileImage" content="https://paramhanji.github.io/images/mstile-144x144.png?v=M44lzPylqQ">
-<meta name="msapplication-config" content="https://paramhanji.github.io/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="https://paramhanji.github.io/assets/css/academicons.css"/>
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
 
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">
@@ -148,19 +148,19 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://paramhanji.github.io/">Param Hanji</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Param Hanji</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://paramhanji.github.io/publications/">Publications</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://paramhanji.github.io/teaching/">Teaching</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Teaching</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://paramhanji.github.io/year-archive/">Blog Posts</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://paramhanji.github.io/cv/">CV</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -188,7 +188,7 @@
 
   <div class="author__avatar">
     
-    	<img src="https://paramhanji.github.io/images/profile.png" class="author__avatar" alt="Param Hanji">
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Param Hanji">
     
   </div>
 
@@ -252,7 +252,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Denoising diffusion probabilistic models">
-    <meta itemprop="description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.">
+    <meta itemprop="description" content="The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.">
     <meta itemprop="datePublished" content="June 30, 2021">
     
 
@@ -283,7 +283,7 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others such as autoregressive models and those based on transformers, but they are much slower to sample from. As result they are not widely used especially when the distribution to be modeled is very high-dimensional.</p>
+        <p>The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.</p>
 
 <p>In the first half of 2021, a few papers popped up on arXiv claiming that a new method, motivated by non-equilibrium statistical physics <a class="citation" href="#sohl2015deep">(Sohl-Dickstein et al., 2015)</a>, achieved sample qualities better than contemporary state-of-the-art models. Here are some generated samples taken directly from these papers.</p>
 
@@ -302,57 +302,57 @@
   </tbody>
 </table>
 
-<p>I read about denoising diffusion probabilistic models (DDPM) while preparing to present to my colleagues at our weekly <a href="https://www.cl.cam.ac.uk/research/rainbow/readingclub/">Rainbow ML reading group</a>. I spent more time than I routinely do since the procedure described and derivations were not easy to follow. Moreover, a detailed explanation can only be found in a handful of involved papers <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Sohl-Dickstein et al., 2015)</a>. So I hope this post will provide a general understanding to a broader audience.</p>
+<p>I read about denoising diffusion probabilistic models (DDPM) while preparing to present to my colleagues at our weekly <a href="https://www.cl.cam.ac.uk/research/rainbow/readingclub/">Rainbow ML reading group</a>. I spent more time than I routinely would since some derivations were not easy to follow. Moreover, you can find a detailed explanation only in a handful of involved papers <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Sohl-Dickstein et al., 2015)</a>. So I hope this post will provide a general understanding to a broader audience.</p>
 
 <h2 id="high-level-overview">High-level overview</h2>
-<p>Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents denoted \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), with a model parameterized by \(\theta\),</p>
+<p>Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), with a model parameterized by \(\theta\),</p>
 
 \[\begin{aligned}
   p_\theta(\boldsymbol{x}) &amp;= \int p_\theta(\boldsymbol{x}_{0:T}) \, d\boldsymbol{x}_{1:T} \\
   &amp;= \int p_\theta(\boldsymbol{x}_T) \prod \limits_{t=1}^T p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) \, d\boldsymbol{x}_{1:T}\,
 \end{aligned}\]
 
-<p>where the factorization of the joint distribution is possible since the model is given by the following Markov chain.</p>
+<p>where \(d\boldsymbol{x}_{1:T}\) is just \(d\boldsymbol{x}_1 d\boldsymbol{x}_2 ... d\boldsymbol{x}_T\). Here, the factorization of the joint distribution is possible since the model is given by the following Markov chain,</p>
 
 <figure class="image">
   <img src="/files/images/ddpm/pgm.png" alt="Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles." />
   <figcaption>Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles.</figcaption>
 </figure>
 
-<p>To optimize our parametric model, we would like to compute the exact marginal likelihood and maximize it. Unfortunately, the exact likelihood (given by the above integral) is not tractable and we are forced to resort to a variational approximation. During my first pass of a DDPM paper <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021)</a>, I found this part particularly hard to follow and was forced to backtrack and read some earlier works. In this post, we will see how to start with the objective of minimizing a divergence between the approximate and true posterior and pry out the evidence lower bound (ELBO). This is of course, variational inference and just in case you need a reminder (or are hearing about it for the first time), here is a brief outline of how it is typically carried out.</p>
+<p>To optimize our parametric model, we would like to compute the exact marginal likelihood and maximize it. Unfortunately, the exact likelihood (given by the above integral) is not tractable, and we are forced to resort to a variational approximation. During my first pass of a DDPM paper <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021)</a>, I found this part particularly hard to follow and was forced to backtrack and read some earlier works. In this post, we will see how to start with the objective of minimizing a divergence between the approximate and true posterior, and pry out the evidence lower bound (ELBO). This is, of course, variational inference, and just in case you need a reminder (or are hearing about it for the first time), here is a brief outline of how it is typically carried out.</p>
 
 <h2 id="a-primer-on-variational-inference">A primer on variational inference</h2>
-<p>The forward model is often quite simple, consisting of a single latent and a single observed variable. Again, here is the graphical model,</p>
+<p>The forward model is often quite simple, consisting of a single latent and a single observed variable. This results in a very simple graphical model,</p>
 
 <figure class="image">
-  <img src="/files/images/ddpm/vi_pgm.png" alt="We stick to the same conventions and use white circles for latent and grey circles for observed variables." />
-  <figcaption>We stick to the same conventions and use white circles for latent and grey circles for observed variables.</figcaption>
+  <img src="/files/images/ddpm/vi_pgm.png" alt="We stick to the same conventions, using white circles for latent and grey circles for observed variables." />
+  <figcaption>We stick to the same conventions, using white circles for latent and grey circles for observed variables.</figcaption>
 </figure>
 
 <p>The posterior \(p(\boldsymbol{z} \vert \boldsymbol{x})\) is, in general, intractable and we resort to using an approximation \(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\), parameterized by \(\phi\). We optimize \(\phi\) by minimizing the KL-divergence between our approximate distribution and the true posterior \(D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x}) \, \| \, p(\boldsymbol{z} \vert \boldsymbol{x}))\). It turns out that this is equivalent to maximizing the evidence lower bound (ELBO) given by,</p>
 
 \[\textrm{ELBO} = \mathbb{E}_{\boldsymbol{z} \sim q_\phi(\boldsymbol{z} \vert \boldsymbol{x})} \left[\log{p(\boldsymbol{x} \vert \boldsymbol{z})} - D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\,||\,p(\boldsymbol{z}))\right]\,.\]
 
-<p>To better understand what is happening, an analogy I like using is that of trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. However it is important to note that these are approximations at best. The only thing left to do is assign a mapping between certain mental states and certain observed behaviors, a process that is roughly equivalent to learning model parameters from data. We <em>learn to infer</em> that when a cat sits on our keyboards, it might be craving attention or that a dog wagging its tail is probably happy.</p>
+<p>To better understand what is happening, an analogy I like using is that of trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. However, it is important to note that these are approximations at best. The final step is assigning a mapping between certain mental states and certain observed behaviors based on real-world interactions, a process that is roughly equivalent to learning model parameters from data. We <em>learn to infer</em> that when a cat sits on our keyboards, it might be “craving attention” or that a dog wagging its tail is “most likely happy”.</p>
 
-<p>I did not want to detail the derivation of obtaining the ELBO for the simple model described above since you can find several lecture notes and blog posts on it. Feel free to refer to them before reading on. In the rest of this post, I will elucidate how to do so for diffusion models.</p>
+<p>I do not want to detail the derivation of obtaining the ELBO for the simple model described above since you can find several lecture notes and blog posts on it. Feel free to refer to them before reading on. In the rest of this post, I will elucidate how to do so for diffusion models.</p>
 
 <h2 id="forward-diffusion-process">Forward diffusion process</h2>
-<p>DDPM papers flip the <em>“direction”</em> to better motivate the diffusion process. As a result, this is the picture you will see in most related work:</p>
+<p>To better motivate the diffusion process, DDPM papers flip the “direction”. As a result, this is the picture you will see in most related work:</p>
 
 <figure class="image">
   <img src="/files/images/ddpm/ddpm.png" alt="The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes." />
   <figcaption>The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes.</figcaption>
 </figure>
 
-<p>The forward process involves starting with an image taken from the training set and degrading it by iteratively adding a little bit of noise. The exact distribution of noise is known beforehand. After infinite iterations, all information in the image is completely lost and we are left with random noise. Formally, the forward <em>diffusion</em> process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\), which is a well-defined process given by</p>
+<p>The forward process starts with an image taken from the training set and degrades it by iteratively adding small quantities of noise. The exact distribution of noise is known beforehand. After infinite iterations, all the information in the image is lost, and we are left with random noise. Formally, the forward <em>diffusion</em> process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\). This is a well-defined process given by</p>
 
 \[q(\boldsymbol{x}_t \vert \boldsymbol{x}_{t-1}) = \mathcal{N}(\boldsymbol{x}_t;\, \sqrt{1 - \beta_t}\boldsymbol{x}_{t-1}, \beta_t \mathbf{I}) \,.\]
 
-<p>Here \(\beta_t\) is provided by a predetermined variance schedule. After a large number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, <a class="citation" href="#nichol2021improved">(Nichol &amp; Dhariwal, 2021)</a> show that between 1000 and 4000 steps are sufficient even for a the complex distribution of ImageNet.</p>
+<p>Here \(\beta_t\) is provided by a predetermined variance schedule. After a large number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, <a class="citation" href="#nichol2021improved">(Nichol &amp; Dhariwal, 2021)</a> show that between 1000 and 4000 steps are sufficient even for a complex distribution such as ImageNet.</p>
 
 <h2 id="reverse-diffusion-process">Reverse diffusion process</h2>
-<p>The reverse process of generating a new sample is given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\), which requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. While the forward process takes as input a slightly noisy image and adds a small amount of additional noise, the reverse inverts this operation. It should be obvious that estimating and removing the noise added in a diffusion step is a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available before training since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.</p>
+<p>The reverse process of generating a new sample boils down to inverting all diffusion steps each given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\). Take a minute to realize that each inversion requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. While the forward process takes as input a slightly noisy image and adds a small amount of additional noise, the reverse inverts this operation. It should be obvious that estimating and removing the noise added in a diffusion step is a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available before training since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.</p>
 
 <p>The choice of the forward diffusion operation, however, ensures that the posterior of each step is Gaussian, enabling us to easily approximate it. The Gaussian has only two parameters that need to be estimated and we do so with a model parameterized by \(\theta\),</p>
 
@@ -361,12 +361,12 @@
 <p>This description is slightly different from the typical variational inference setup where an approximate model is used to obtain <em>latents given the data</em>. Here, the approximate model provides <em>the data given the latents</em>. The procedure remains the same—obtain a lower bound on the marginal log-likelihood of the data and update the parameters of a model to maximize it.</p>
 
 <h2 id="evidence-lower-bound">Evidence lower bound</h2>
-<p>Generally, latent variable models approximate the posterior of the latents, \(p(\boldsymbol{x}_{1:T}|\boldsymbol{x}_0)\) with a parameterized function. However, as we saw in the previous section, this approximation is predetermined when using diffusion methods. Instead, we learn the inversion of this process, \(p_\theta(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})\) using the ELBO. Pay attention to the fact that the parameterization is now on the generative probability while the “approximate” posterior probability is well-defined due to diffusion. To derive the ELBO, we start with the objective of minimizing the KL-divergence between the approximate and true posteriors,</p>
+<p>Generally, latent variable models approximate the posterior of the latents, \(p(\boldsymbol{x}_{1:T}|\boldsymbol{x}_0)\) with a parameterized function. However, as we saw in the previous section, this approximation is predetermined when using diffusion methods. Instead, we learn the inversion of this process, \(p_\theta(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})\) using the ELBO. Pay attention to the fact that the parameterization is now on the generative probability while the “approximate” posterior probability is well-defined. To derive the ELBO, we start with the objective of minimizing the KL-divergence between the approximate and true posteriors,</p>
 
 \[\begin{aligned}
   D_{KL} (q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \, \| \, p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0))
   &amp;= \mathbb{E} _q \left[ \log \frac{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right] \\
-  &amp;= \mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{0:T})} \cdot q(\boldsymbol{x}_0 \vert \boldsymbol{x}_{1:T}) \right] \\
+  &amp;= \mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{0:T})} \cdot q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \right] \\
   \implies \log p_\theta(\boldsymbol{x}_0) &amp;= \underbrace{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right]}_\textrm{ELBO} + \underbrace{\vphantom{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})} \right]} D_{KL} (q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \, \| \, p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0))}_\textrm{non-negative divergence}
 \end{aligned}\]
 
@@ -379,11 +379,11 @@
   &amp;= \underbrace{\vphantom{\sum \limits_{t=2}^T} -\mathbb{E}_q \left[ \log p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) \right]}_{L_0} + \underbrace{\sum \limits_{t=2}^T D_\textrm{KL}(q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0) \, || \, p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t))}_{L_1, L_2, ..., L_{T-1}} + \underbrace{\vphantom{\sum \limits_{t=2}^T} D_\textrm{KL}(q(\boldsymbol{x}_T | \boldsymbol{x}_0) \, || \, p(\boldsymbol{x}_T))}_{L_T} \,.
 \end{aligned}\]
 
-<p>The formulation of diffusion models means that each intermediate probability \(p_\theta(\boldsymbol{x}_t)\), as well as \(q(\boldsymbol{x}_t)\). is a Gaussian. The final loss \(L = \Sigma_{t=0}^TL_t\) is thus a sum of many terms where all but one are KL-divergences between Gaussians. There are a few more caveats to optimizing this loss, but you will have to check out the papers for details <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Nichol &amp; Dhariwal, 2021)</a>.</p>
+<p>The formulation of diffusion models means that each intermediate probability \(p_\theta(\boldsymbol{x}_t)\), as well as \(q(\boldsymbol{x}_t)\). is a Gaussian. The final loss \(L = \Sigma_{t=0}^TL_t\) is thus a sum of many terms where all but one are KL-divergences between Gaussians. There are a few more caveats to optimizing this loss, but you will have to look at the papers for details <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Nichol &amp; Dhariwal, 2021)</a>.</p>
 
 <h2 id="practical-considerations">Practical considerations</h2>
 <ul>
-  <li>Since each diffusion step simply adds Gaussian noise according to a predetermined schedule and Gaussians are closed under multiplication, we can directly sample an intermediate noisy image from \(q(\boldsymbol{x}_t \vert \boldsymbol{x}_0)\). Not having to iteratively perform every diffusion step vastly speeds up training.</li>
+  <li>Since each diffusion step adds Gaussian noise according to a predetermined schedule and Gaussians are closed under multiplication, we can directly sample an intermediate noisy image from \(q(\boldsymbol{x}_t \vert \boldsymbol{x}_0)\). Not having to iteratively perform every diffusion step vastly speeds up training.</li>
   <li>For generating new data after training, earlier papers recommended starting with a randomly drawn sample and going through the entire reverse diffusion operation iteratively. However, recent works  <a class="citation" href="#song2020denoising">(Song et al., 2020; Nichol &amp; Dhariwal, 2021)</a> demonstrate that this is not essential, and high-quality novel samples can be obtained with as few as 50 diffusion steps.</li>
   <li>The best results, with the highest likelihoods, are class-conditional samples. A few different approaches for conditioning <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021; Luo &amp; Hu, 2021)</a> are possible.</li>
 </ul>
@@ -419,15 +419,15 @@
     
       
       
-      <a href="https://paramhanji.github.io/tags/#deep-generative-models" class="page__taxonomy-item" rel="tag">deep generative models</a><span class="sep">, </span>
+      <a href="http://localhost:4000/tags/#deep-generative-models" class="page__taxonomy-item" rel="tag">deep generative models</a><span class="sep">, </span>
     
       
       
-      <a href="https://paramhanji.github.io/tags/#evidence-lower-bound" class="page__taxonomy-item" rel="tag">evidence lower bound</a><span class="sep">, </span>
+      <a href="http://localhost:4000/tags/#evidence-lower-bound" class="page__taxonomy-item" rel="tag">evidence lower bound</a><span class="sep">, </span>
     
       
       
-      <a href="https://paramhanji.github.io/tags/#stochastic-diffusion-models" class="page__taxonomy-item" rel="tag">stochastic diffusion models</a>
+      <a href="http://localhost:4000/tags/#stochastic-diffusion-models" class="page__taxonomy-item" rel="tag">stochastic diffusion models</a>
     
     </span>
   </p>
@@ -444,11 +444,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/posts/2021/06/ddpm/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2021/06/ddpm/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/posts/2021/06/ddpm/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2021/06/ddpm/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/posts/2021/06/ddpm/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2021/06/ddpm/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -456,7 +456,7 @@
 
   <nav class="pagination">
     
-      <a href="https://paramhanji.github.io/posts/2021/02/least-squares/" class="pagination--pager" title="Least Squares
+      <a href="http://localhost:4000/posts/2021/02/least-squares/" class="pagination--pager" title="Least Squares
 ">Previous</a>
     
     
@@ -489,7 +489,7 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://paramhanji.github.io/posts/2021/02/least-squares/" rel="permalink">Least Squares
+        <a href="http://localhost:4000/posts/2021/02/least-squares/" rel="permalink">Least Squares
 </a>
       
     </h2>
@@ -531,7 +531,7 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://paramhanji.github.io/posts/2016/08/gsoc/" rel="permalink">GSoC
+        <a href="http://localhost:4000/posts/2016/08/gsoc/" rel="permalink">GSoC
 </a>
       
     </h2>
@@ -587,7 +587,7 @@
       <li><a href="http://github.com/paramhanji"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
-    <li><a href="https://paramhanji.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
@@ -596,7 +596,7 @@
       </footer>
     </div>
 
-    <script src="https://paramhanji.github.io/assets/js/main.min.js"></script>
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
 
 
 
