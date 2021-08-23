@@ -19,7 +19,7 @@
 
 
 
-<title>Noise-Aware Merging of High Dynamic Range Image Stacks without Camera Calibration - Param Hanji</title>
+<title>How to cheat with metrics in single-image HDR reconstruction  - Param Hanji</title>
 
 
 
@@ -29,15 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Param Hanji">
-<meta property="og:title" content="Noise-Aware Merging of High Dynamic Range Image Stacks without Camera Calibration">
+<meta property="og:title" content="How to cheat with metrics in single-image HDR reconstruction">
 
 
-  <link rel="canonical" href="https://paramhanji.github.io/publication/2020-08-28-ppne-mle">
-  <meta property="og:url" content="https://paramhanji.github.io/publication/2020-08-28-ppne-mle">
+  <link rel="canonical" href="https://paramhanji.github.io/publication/2021-10-17-si-hdr-cheat">
+  <meta property="og:url" content="https://paramhanji.github.io/publication/2021-10-17-si-hdr-cheat">
 
 
 
-  <meta property="og:description" content="Although the state-of-the-art HDR reconstruction methods advocate using complex MLE solvers, we demonstrate that they provide little advantage over the simple Poisson noise estimator, which does not require camera noise calibration.">
+  <meta property="og:description" content="This paper inspects the commonly used evaluation protocol for single-image HDR (SI-HDR) reconstruction.  We discern problems in the high variability in evaluation conditions between papers, and show how very simple methods can beat state-of-the-art results.">
 
 
 
@@ -52,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2020-08-28T00:00:00+01:00">
+  <meta property="article:published_time" content="2021-10-17T00:00:00+01:00">
 
 
 
@@ -251,35 +251,33 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Noise-Aware Merging of High Dynamic Range Image Stacks without Camera Calibration">
-    <meta itemprop="description" content="Although the state-of-the-art HDR reconstruction methods advocate using complex MLE solvers, we demonstrate that they provide little advantage over the simple Poisson noise estimator, which does not require camera noise calibration.">
-    <meta itemprop="datePublished" content="August 28, 2020">
+    <meta itemprop="headline" content="How to cheat with metrics in single-image HDR reconstruction">
+    <meta itemprop="description" content="This paper inspects the commonly used evaluation protocol for single-image HDR (SI-HDR) reconstruction.  We discern problems in the high variability in evaluation conditions between papers, and show how very simple methods can beat state-of-the-art results.">
+    <meta itemprop="datePublished" content="October 17, 2021">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Noise-Aware Merging of High Dynamic Range Image Stacks without Camera Calibration
+          <h1 class="page__title" itemprop="headline">How to cheat with metrics in single-image HDR reconstruction
 </h1>
           
         
         
         
-          <p>Published in <i>Advances in Image Manipulation Workshop @ ECCV 2020</i>, 2020 </p>
+          <p>Published in <i>2nd Learning for Computational Imaging (LCI) Workshop @ ICCV 2021</i>, 2021 </p>
         
         
              
         
-          <p>Recommended citation: <strong>Param Hanji</strong>, Fangcheng Zhong, and Rafał K. Mantiuk. &quot;Noise-aware merging of high dynamic range image stacks without camera calibration&quot;. In <i>Proceedings of the European Conference on Computer Vision (ECCV) Workshops</i>, pages 376–391. Springer, 2020. <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/noise-aware-merging/2020-ppne-mle.pdf"><u>https://www.cl.cam.ac.uk/research/rainbow/projects/noise-aware-merging/2020-ppne-mle.pdf</u></a></p>
+          <p>Recommended citation: Gabriel Eilertsen, Saghi Hajisharif, <strong>Param Hanji</strong> , Apostolia Tsirikoglou, Rafał K. Mantiuk, and Jonas Unger. &quot;How to cheat with metrics in single-image HDR reconstruction&quot;. In <i>Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops</i>. 2021. <a href="https://arxiv.org/abs/2108.08713"><u>https://arxiv.org/abs/2108.08713</u></a></p>
         
     
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p>A near-optimal reconstruction of the radiance of a High Dynamic Range scene from an exposure stack can be obtained by modeling the camera noise distribution. The latent radiance is then estimated using Maximum Likelihood Estimation. But this requires a well-calibrated noise model of the camera, which is difficult to obtain in practice. We show that an unbiased estimation of comparable variance can be obtained with a simpler Poisson noise estimator, which does not require the knowledge of camera-specific noise parameters. We demonstrate this empirically for four different cameras, ranging from a smartphone camera to a full-frame mirrorless camera. Our experimental results are consistent for simulated as well as real images, and across different camera settings.</p>
-
-<p>Please view the <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/noise-aware-merging/">project page</a> for more information.</p>
+        <p>Single-image high dynamic range (SI-HDR) reconstruction has recently emerged as a problem well-suited for deep learning methods. Each successive technique demonstrates an improvement over existing methods by reporting higher image quality scores. This paper, however, highlights that such improvements in objective metrics do not necessarily translate to visually superior images. The first problem is the use of disparate evaluation conditions in terms of data and metric parameters, calling for a standardized protocol to make it possible to compare between papers. The second problem, which forms the main focus of this paper, is the inherent difficulty in evaluating SI-HDR reconstructions since certain aspects of the reconstruction problem dominate objective differences, thereby introducing a bias. Here, we reproduce a typical evaluation using existing as well as simulated SI-HDR methods to demonstrate how different aspects of the problem affect objective quality metrics. Surprisingly, we found that methods that do not even reconstruct HDR information can compete with state-of-the-art deep learning methods. We show how such results are not representative of the perceived quality and that SI-HDR reconstruction needs better evaluation protocols.</p>
 
         
       </section>
@@ -300,11 +298,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/publication/2020-08-28-ppne-mle" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/publication/2021-10-17-si-hdr-cheat" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/publication/2020-08-28-ppne-mle" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/publication/2021-10-17-si-hdr-cheat" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/publication/2020-08-28-ppne-mle" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/publication/2021-10-17-si-hdr-cheat" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -312,12 +310,11 @@
 
   <nav class="pagination">
     
-      <a href="https://paramhanji.github.io/publication/2017-12-18-pihc-tsp" class="pagination--pager" title="Parallel Computing for Iterative Hill Climbing Algorithm to solve TSP
+      <a href="https://paramhanji.github.io/publication/2021-09-20-hdr4cv-data" class="pagination--pager" title="HDR4CV: High dynamic range dataset with adversarial illumination for testing computer vision methods
 ">Previous</a>
     
     
-      <a href="https://paramhanji.github.io/publication/2021-09-20-hdr4cv-data" class="pagination--pager" title="HDR4CV: High dynamic range dataset with adversarial illumination for testing computer vision methods
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
