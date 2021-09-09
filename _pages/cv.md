@@ -11,9 +11,9 @@ redirect_from:
 
 Education
 ======
-* BTech in Information Technology, National Institute of Technology Karnataka, India, 2018
-* CPGS (equivalent to MRes) in Computer Science, University of Cambridge, 2020
 * PhD in Computer Vision, University of Cambridge, 2023 (expected)
+* CPGS (equivalent to MRes) in Computer Science, University of Cambridge, 2020
+* BTech in Information Technology, National Institute of Technology Karnataka, India, 2018
 
 Work experience
 ======
