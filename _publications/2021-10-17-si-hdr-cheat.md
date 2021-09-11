@@ -2,7 +2,6 @@
 title: "How to cheat with metrics in single-image HDR reconstruction
 "
 collection: publications
-excerpt: 'This paper inspects the commonly used evaluation protocol for single-image HDR (SI-HDR) reconstruction.  We discern problems in the high variability in evaluation conditions between papers, and show how very simple methods can beat state-of-the-art results.'
 date: 2021-10-17
 permalink: /publication/2021-10-17-si-hdr-cheat
 venue: '2nd Learning for Computational Imaging (LCI) Workshop @ ICCV'
