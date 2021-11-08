@@ -8,7 +8,7 @@ date: 2021-11-04
 location: "Cambridge, UK"
 ---
 
-I introduced a probabilistic framework to learn a bijective mapping between two domains using unpaired data. The framework uses invertible layers with tractable determinant-jacobians to find the mapping using exact likelihood training. You can find some preliminary code at <a href="https://github.com/paramhanji/translation" target="_blank">this Github repo</a>. If you've got an nifty application that stands to benifit from this invertible framework, get in touch.
+I introduce a probabilistic framework to learn a bijective mapping between two domains using only unpaired data. The framework uses invertible layers with tractable determinant-jacobians to find the mapping using exact likelihood training. You can find some preliminary code at <a href="https://github.com/paramhanji/translation" target="_blank">this Github repo</a>. If you've got a nifty application that stands to benifit from this invertible framework, get in touch.
 
 ![Invertible framework](/files/images/pechakucha/inv_framework.jpg)
 
