@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-During my time in the Computer Lab at Cambridge, I have supervised or demonstrated the following courses:
+Additionally, during my time in the Computer Lab at Cambridge, I have supervised or demonstrated the following courses:
 
 IA Introduction to Probability
 ======
@@ -19,7 +19,7 @@ IA Introduction to Probability
 
 IA Algorithms
 ======
-* Lent 2020 and Lent 2021
+* Lent 2020, 2021
 * Course page: <https://www.cst.cam.ac.uk/teaching/2021/Algorithms/>
 * Supervised a total of 6 groups for 6 sessions each
 
@@ -37,9 +37,10 @@ IB Programming in C and C++
 
 MPhil ACS/Part III Advanced graphics and image processing
 ======
-* Lent 2019 and Lent 2020
+* Lent 2019, 2020, 2021
 * Course page: <https://www.cst.cam.ac.uk/teaching/2021/L352/>
-* Helped design and evaluate ticks, supervised 2 MPhil projects
+* Helped design and evaluate ticks
+* Supervised 2 MPhil projects
 
 IB Further Graphics
 ======
@@ -49,6 +50,6 @@ Course page: <https://www.cl.cam.ac.uk/teaching/1920/FGraphics/>
 
 IA Introduction to Graphics
 ======
-* Michealmas 2019
+* Michealmas 2019, 2021
 * Course page: <https://www.cl.cam.ac.uk/teaching/1920/Graphics/>
 * Ticking and demonstrating
