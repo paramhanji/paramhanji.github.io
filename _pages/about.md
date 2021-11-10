@@ -12,7 +12,7 @@ redirect_from:
 
 Welcome to my home on the web! I am final year PhD student at the University of Cambridge, supervised by <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. My current research is on inverse problems in computational photography and computer vision. In recent and ongoing projects, I apply noise-optimal statistical estimators to imaging problems. My other research interests include probablistic generative modeling and deep invertible networks.
 
-When I'm not working, I'm probably at [Girton](https://www.girton.cam.ac.uk/) playing tennis or squash. Get in touch if you'd like to play a game or simply converse over mug of hot chocolate.
+When I'm not working, I'm probably at <a href="https://www.girton.cam.ac.uk/" target="_blank">Girton</a> playing tennis or squash. Get in touch if you'd like to play a game or simply converse over a mug of hot chocolate.
 
 # News
 * Presented [Unsupervised domain translation](/talks/2021-11-04-domain-translation), at the Girton MCR PechaKucha
