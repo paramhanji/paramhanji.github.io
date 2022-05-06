@@ -10,10 +10,10 @@ redirect_from:
 
 {% include base_path %}
 
-Welcome to my home on the web! I am final year PhD student at the University of Cambridge, supervised by <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. My current research is on inverse problems in computational photography and computer vision. In recent and ongoing projects, I apply noise-optimal statistical estimators to imaging problems. My other research interests include probablistic generative modeling and deep invertible networks.
+Welcome to my home on the web! I am final year PhD student at the University of Cambridge, supervised by <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. My current research is on inverse problems in computational photography and computer vision. In recent and ongoing projects, I apply noise-optimal statistical estimators to HDR imaging problems. My other research interests include probablistic generative modeling and deep invertible networks.
 
 # Recent news
-> * Paper on SI-HDR quality assessment accepted to **Siggraph 2022**. More details to follow soon
+> * Paper on <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/sihdr-benchmark/" target="_blank">SI-HDR quality assessment</a> accepted to **SIGGRAPH 2022**
 > * Presented [Unsupervised domain translation](/talks/2021-11-04-domain-translation), at the Girton MCR PechaKucha
 > * I am supervising two Part II (Cambridge lingo for final year undergrad) projects in 2021-22
 >   * Max McGuinness: *Image rescaling using invertible neural networks by probabilistic disentanglement*
