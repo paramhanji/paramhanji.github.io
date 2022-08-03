@@ -13,7 +13,7 @@ If you prefer a concise résumé, please see find it [here](/files/param_hanji_r
 
 Education
 ======
-* PhD in Computer Vision, University of Cambridge, 2023 (expected). Funded by the ERC ERC Grant Horizon 2020: Project <a href="https://erc.europa.eu/projects-figures/erc-funded-projects/results?search_api_views_fulltext=eyecode" target="_blank">Eyecode</a>.
+* PhD in Computer Vision, University of Cambridge, 2023 (expected). Funded by the ERC ERC Grant Horizon 2020: Project <a href="https://cordis.europa.eu/project/id/725253" target="_blank">Eyecode</a>.
 * B.Tech. in Information Technology, National Institute of Technology Karnataka, India, 2018.
 
 Work experience
