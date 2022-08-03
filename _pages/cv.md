@@ -9,11 +9,12 @@ redirect_from:
 
 {% include base_path %}
 
+If you prefer a concise résumé, please see find it [here](/files/param_hanji_resume.pdf).
+
 Education
 ======
-* PhD in Computer Vision, University of Cambridge, 2023 (expected)
-* CPGS (equivalent to MRes) in Computer Science, University of Cambridge, 2020
-* BTech in Information Technology, National Institute of Technology Karnataka, India, 2018
+* PhD in Computer Vision, University of Cambridge, 2023 (expected). Funded by the ERC ERC Grant Horizon 2020: Project <a href="https://erc.europa.eu/projects-figures/erc-funded-projects/results?search_api_views_fulltext=eyecode" target="_blank">Eyecode</a>.
+* B.Tech. in Information Technology, National Institute of Technology Karnataka, India, 2018.
 
 Work experience
 ======
@@ -21,9 +22,10 @@ Work experience
   * Supervisor: [Dr Rafał Mantiuk](https://www.cl.cam.ac.uk/~rkm38/)
   * Working to capture and render images on a novel multi-focalplane, stereoscopic, high dynamic range display. We aim to produce images that will successfully pass the Visual Turing Test.
   * Responsible for reconstructing HDR images and estimating per-view depth maps. MLE-based estimators obtained by assuming a statistical camera noise model produced the best HDR images. Preliminary results were presented at an ECCV workshop, with a more elaborate journal version currently under review.
+  * Also worked on optical flow, differentiable rendering, neural view synthesis
 
 * Sept 2020 - Feb 2021: Part-time project with Huawei Research, Munich
-  * Exploring the effect of different tone-curves on the performance of state-of-the-art Computer Vision methods.
+  * Exploring the effect of different tone-curves (encoding functions) on the performance of state-of-the-art Computer Vision methods.
   * Conducted an evaluation of state-of-the-art face and object detectors as well as optical flow with the help of a new adversarial illumination dataset. The dataset and preliminary study were accepted to be published in the Journal of Imaging Science and Technology (JIST).
 
 * July 2018 - Jan 2019: Research Assistant at National University of Singapore
@@ -37,3 +39,7 @@ Publications
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
+
+Supervisions
+======
+Please see [Teaching](/teaching/)
