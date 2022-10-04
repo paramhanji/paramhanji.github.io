@@ -10,7 +10,7 @@ redirect_from:
 
 {% include base_path %}
 
-Welcome to my home on the web! I am final year PhD student at the University of Cambridge, supervised by <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. My current research is on inverse problems in computational photography and computer vision. In recent and ongoing projects, I apply noise-optimal statistical estimators to HDR imaging problems. My other research interests include probablistic generative modeling and deep invertible networks.
+Welcome to my home on the web! I am a postdoctoral researcher working with <a href="https://www.cl.cam.ac.uk/~aco41/" target="_blank">Cengiz Öztireli</a> at Cambridge. My current research focuses on probabilistic generative models applied to images as well as 3D data. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. Many years before this, I completed my undergrad in *Information Technology* from the National Institute of Technology Karnataka (NITK), India.
 
 # Recent news
 > * Paper on <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/sihdr_benchmark/" target="_blank">SI-HDR quality assessment</a> accepted to **SIGGRAPH 2022**
