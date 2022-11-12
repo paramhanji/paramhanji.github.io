@@ -19,7 +19,7 @@
 
 
 
-<title>About me - Param Hanji</title>
+<title>Distilling Style from Image Pairs for Global Forward and Inverse Tone Mapping - Param Hanji</title>
 
 
 
@@ -29,27 +29,30 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Param Hanji">
-<meta property="og:title" content="About me">
+<meta property="og:title" content="Distilling Style from Image Pairs for Global Forward and Inverse Tone Mapping">
 
 
-  <link rel="canonical" href="https://paramhanji.github.io/">
-  <meta property="og:url" content="https://paramhanji.github.io/">
-
-
-
-  <meta property="og:description" content="About me">
+  <link rel="canonical" href="https://paramhanji.github.io/publication/2022-12-02-style-nf">
+  <meta property="og:url" content="https://paramhanji.github.io/publication/2022-12-02-style-nf">
 
 
 
+  <meta property="og:description" content="Many image enhancement or editing operations, such as forward and inverse tone mapping or color grading, do not have a unique solution, but instead a range of solutions, each representing a different style. Despite this, existing learning-based methods attempt to learn a unique mapping, disregarding this style. In this work, we show that information about the style can be distilled from collections of image pairs and encoded into a 2- or 3-dimensional vector. This gives us not only an efficient representation but also an interpretable latent space for editing the image style. We represent the global color mapping between a pair of images as a custom normalizing flow, conditioned on a polynomial basis of the pixel color. We show that such a network is more effective than PCA or VAE at encoding image style in low-dimensional space and lets us obtain an accuracy close to 40 dB, which is about 7-10 dB improvement over the state-of-the-art methods.">
 
+
+
+
+
+  
 
   
 
-  
 
 
 
 
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2022-12-02T00:00:00+00:00">
 
 
 
@@ -253,43 +256,33 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="About me">
-    <meta itemprop="description" content="About me">
-    
+    <meta itemprop="headline" content="Distilling Style from Image Pairs for Global Forward and Inverse Tone Mapping">
+    <meta itemprop="description" content="Many image enhancement or editing operations, such as forward and inverse tone mapping or color grading, do not have a unique solution, but instead a range of solutions, each representing a different style. Despite this, existing learning-based methods attempt to learn a unique mapping, disregarding this style. In this work, we show that information about the style can be distilled from collections of image pairs and encoded into a 2- or 3-dimensional vector. This gives us not only an efficient representation but also an interpretable latent space for editing the image style. We represent the global color mapping between a pair of images as a custom normalizing flow, conditioned on a polynomial basis of the pixel color. We show that such a network is more effective than PCA or VAE at encoding image style in low-dimensional space and lets us obtain an accuracy close to 40 dB, which is about 7-10 dB improvement over the state-of-the-art methods.">
+    <meta itemprop="datePublished" content="December 02, 2022">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">About me
+          <h1 class="page__title" itemprop="headline">Distilling Style from Image Pairs for Global Forward and Inverse Tone Mapping
 </h1>
           
         
         
         
+          <p>Published in <i>ACM SIGGRAPH Conference on Visual Media Production (CVMP)</i>, 2022 </p>
+        
         
              
+        
+          <p>Recommended citation: Mustafa, Aamir, <strong>Param Hanji</strong>, and Rafał K. Mantiuk. &quot;Distilling Style from Image Pairs for Global Forward and Inverse Tone Mapping.&quot; arXiv preprint arXiv:2209.15165 (2022). <a href="https://arxiv.org/abs/2209.15165"><u>https://arxiv.org/abs/2209.15165</u></a></p>
         
     
         </header>
       
 
       <section class="page__content" itemprop="text">
-        
-<p>Welcome to my home on the web! I am a postdoctoral researcher working with <a href="https://www.cl.cam.ac.uk/~aco41/" target="_blank">Cengiz Öztireli</a> at Cambridge. My current research focuses on probabilistic generative models applied to images as well as 3D data. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>. Many years before this, I completed my undergrad in <em>Information Technology</em> from the National Institute of Technology Karnataka (NITK), India.</p>
-
-<h1 id="recent-news">Recent news</h1>
-<blockquote>
-  <ul>
-    <li>Paper on <a href="https://arxiv.org/abs/2209.15165" target="_blank">Distilling global style with normalizing flows</a> to be presented at <strong>CVMP 2022</strong></li>
-    <li>Helped design and deliver <a href="https://www.cl.cam.ac.uk/teaching/2223/L335/" target="_blank">L335: Machine Visual Perception</a> in Michealmas, 2022</li>
-    <li>On October 2022, I started a postdoc with <a href="https://www.cl.cam.ac.uk/~aco41/" target="_blank">Cengiz Öztireli’s</a> team</li>
-    <li>Paper on <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/sihdr_benchmark/" target="_blank">SI-HDR quality assessment</a> accepted to <strong>SIGGRAPH 2022</strong></li>
-    <li>Paper accepted to <strong>SIGGRAPH ASIA 2021</strong> - <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/hdrmfs/" target="_blank">Reproducing Reality with a High-Dynamic-Range Multi-Focal Stereo Display</a></li>
-  </ul>
-</blockquote>
-
-<p>When I’m not working, I’m probably at <a href="https://www.girton.cam.ac.uk/" target="_blank">Girton</a> playing tennis or squash. Get in touch if you’d like to play a game or simply converse over a mug of hot chocolate.</p>
+        <p>Many image enhancement or editing operations, such as forward and inverse tone mapping or color grading, do not have a unique solution, but instead a range of solutions, each representing a different style. Despite this, existing learning-based methods attempt to learn a unique mapping, disregarding this style. In this work, we show that information about the style can be distilled from collections of image pairs and encoded into a 2- or 3-dimensional vector. This gives us not only an efficient representation but also an interpretable latent space for editing the image style. We represent the global color mapping between a pair of images as a custom normalizing flow, conditioned on a polynomial basis of the pixel color. We show that such a network is more effective than PCA or VAE at encoding image style in low-dimensional space and lets us obtain an accuracy close to 40 dB, which is about 7-10 dB improvement over the state-of-the-art methods.</p>
 
         
       </section>
@@ -310,15 +303,25 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/publication/2022-12-02-style-nf" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/publication/2022-12-02-style-nf" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/publication/2022-12-02-style-nf" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
 
+
+  <nav class="pagination">
+    
+      <a href="https://paramhanji.github.io/publication/2022-07-24-sihdr-benchmark" class="pagination--pager" title="Comparison of single image HDR reconstruction methods — the caveats of quality assessment
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
 
     </div>
 
