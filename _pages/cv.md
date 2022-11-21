@@ -13,12 +13,18 @@ If you prefer a concise résumé, please see find it [here](/files/param_hanji_r
 
 Education
 ======
-* PhD in Computer Vision, University of Cambridge, 2023 (expected). Funded by the ERC ERC Grant Horizon 2020: Project <a href="https://cordis.europa.eu/project/id/725253" target="_blank">Eyecode</a>.
+* PhD in Computer Vision, University of Cambridge, 2023 (expected). Funded by the ERC Grant Horizon 2020: Project <a href="https://cordis.europa.eu/project/id/725253" target="_blank">Eyecode</a>.
 * B.Tech. in Information Technology, National Institute of Technology Karnataka, India, 2018.
 
 Work experience
 ======
-* Feb 2019 - Present: Research Assistant at University of Cambridge
+* Oct 2022 - Present: Research Associate at University of Cambridge
+  * Supervisor: [Dr Cengiz Öztireli](https://www.cl.cam.ac.uk/~aco41/)
+  * 3D generative modelling with pointclouds and/or implicit neural representations
+  * Helped design and deliver [L355: Machine Visual Perception](https://www.cl.cam.ac.uk/teaching/2223/L335/)
+  * Supervising a year-long MPhil. and Part II project in generative modelling with diffusion methods
+
+* Feb 2019 - Sept 2022: Research Assistant at University of Cambridge
   * Supervisor: [Dr Rafał Mantiuk](https://www.cl.cam.ac.uk/~rkm38/)
   * Working to capture and render images on a novel multi-focalplane, stereoscopic, high dynamic range display. We aim to produce images that will successfully pass the Visual Turing Test.
   * Responsible for reconstructing HDR images and estimating per-view depth maps. MLE-based estimators obtained by assuming a statistical camera noise model produced the best HDR images. Preliminary results were presented at an ECCV workshop, with a more elaborate journal version currently under review.
