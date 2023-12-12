@@ -10,12 +10,12 @@ redirect_from:
 
 {% include base_path %}
 
-Welcome to my home on the web! I am a Computational Graphics & Vision researcher working with the Video Engineering team at Apple Research in Cambridge, UK. I joined Apple after a brief stint as a postdoc in 3D Vision with <a href="https://www.cl.cam.ac.uk/~aco41/" target="_blank">Cengiz Öztireli's</a> lab at the University of Cambridge. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a>.
+Welcome to my home on the web! I am a Computater Graphics & Vision researcher working with the Video Engineering team at Apple Research. I joined Apple after a brief stint as a postdoc in 3D Vision with <a href="https://www.cl.cam.ac.uk/~aco41/" target="_blank">Cengiz Öztireli's</a> lab at the University of Cambridge. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a> also at Cambridge.
 
 My research interests span a diverse spectrum, centering on problems within Computational Photography as well as low-level 2D and 3D Computer Vision. Simultaneously, I've also been actively involved in the development of probabilistic generative models and their applications to Graphics and Vision.
 
 # Recent news
-> * Since December 2023, I work on Camera Algorithms with **Apple Research, Cambridge**
+> * Joined **Apple Research** at Cambridge in December 2023, to work on Camera Algorithms
 > * Thrilled to receive the <a href="https://www.cst.cam.ac.uk/wiseman-prize" target="_blank">Wiseman Prize</a> for 2023
 > * Paper on <a href="https://cnf2023.netlify.app/" target="_blank">Constrained Neural Fields</a> accepted to **NeurIPS 2023**
 > * Paper on <a href="publication/2023-07-31-exposure-estimation" target="_blank">Automatic Exposure estimation</a> published in **Transactions on Computational Imaging**
