@@ -10,7 +10,7 @@ redirect_from:
 
 {% include base_path %}
 
-Welcome to my home on the web! I am a Computer Graphics & Vision researcher working with the Video Engineering team at Apple Research. I joined Apple after a brief stint as a postdoc in 3D Vision at <a href="https://core-lab.io/" target="_blank">Cengiz Öztireli's CORE Lab</a> lab at the University of Cambridge. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a> also at Cambridge.
+Welcome to my home on the web! I am a Computer Graphics & Vision researcher working with the Video Engineering team at Apple Research. I joined Apple after a brief stint as a postdoc in 3D Vision at <a href="https://core-lab.io/" target="_blank">Cengiz Öztireli's CORE Lab</a> at the University of Cambridge. Prior to October 2022, I did my PhD on inverse problems in high dynamic range imaging under the supervision of <a href="https://www.cl.cam.ac.uk/~rkm38/" target="_blank">Rafał Mantiuk</a> also at Cambridge.
 
 My research interests span a diverse spectrum, centering on reconstruction problems within Computational Photography, as well as low-level 2D and 3D Computer Vision. Simultaneously, I have also been actively involved in the development of probabilistic generative models and their applications to problems in Graphics and Vision. Yet another direction I have pursued is the automatic assessment of images and videos with quantitative metrics.
 
