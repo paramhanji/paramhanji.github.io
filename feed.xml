@@ -1,149 +1,281 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://paramhanji.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://paramhanji.github.io/" rel="alternate" type="text/html" /><updated>2023-12-29T12:01:46+00:00</updated><id>https://paramhanji.github.io/feed.xml</id><title type="html">Param Hanji</title><subtitle>PhD student at the University of Cambridge</subtitle><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><entry><title type="html">Denoising diffusion probabilistic models</title><link href="https://paramhanji.github.io/posts/2021/06/ddpm/" rel="alternate" type="text/html" title="Denoising diffusion probabilistic models" /><published>2021-06-30T00:00:00+01:00</published><updated>2021-06-30T00:00:00+01:00</updated><id>https://paramhanji.github.io/posts/2021/06/ddpm</id><content type="html" xml:base="https://paramhanji.github.io/posts/2021/06/ddpm/">&lt;p&gt;The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://paramhanji.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://paramhanji.github.io/" rel="alternate" type="text/html" /><updated>2024-11-18T15:11:40+00:00</updated><id>https://paramhanji.github.io/feed.xml</id><title type="html">Param Hanji</title><subtitle>PhD student at the University of Cambridge</subtitle><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><entry><title type="html">Ddpm</title><link href="https://paramhanji.github.io/ddpm/" rel="alternate" type="text/html" title="Ddpm" /><published>2021-06-30T00:00:00+01:00</published><updated>2021-06-30T00:00:00+01:00</updated><id>https://paramhanji.github.io/ddpm</id><content type="html" xml:base="https://paramhanji.github.io/ddpm/"><![CDATA[<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+<!-- begin SEO -->
 
-&lt;p&gt;In the first half of 2021, a few papers popped up on arXiv claiming that a new method, motivated by non-equilibrium statistical physics &lt;a class=&quot;citation&quot; href=&quot;#sohl2015deep&quot;&gt;(Sohl-Dickstein et al., 2015)&lt;/a&gt;, achieved sample qualities better than contemporary state-of-the-art models. Here are some generated samples taken directly from these papers.&lt;/p&gt;
+  <link rel="canonical" href="https://paramhanji.github.io/posts/2021/06/ddpm/">
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/files/images/ddpm/imagenet.png&quot; alt=&quot;imagenet&quot; /&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/files/images/ddpm/pointcloud.png&quot; alt=&quot;pointcloud&quot; /&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;ImageNet 256 &lt;a class=&quot;citation&quot; href=&quot;#dhariwal2021diffusion&quot;&gt;(Dhariwal &amp;amp; Nichol, 2021)&lt;/a&gt;&lt;/em&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;ShapeNet dataset &lt;a class=&quot;citation&quot; href=&quot;#luo2021diffusion&quot;&gt;(Luo &amp;amp; Hu, 2021)&lt;/a&gt;&lt;/em&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 
-&lt;p&gt;I read about denoising diffusion probabilistic models (DDPM) while preparing to present to my colleagues at our weekly &lt;a href=&quot;https://www.cl.cam.ac.uk/research/rainbow/readingclub/&quot;&gt;Rainbow ML reading group&lt;/a&gt;. I spent more time than I routinely would since some derivations were not easy to follow. Moreover, you can find a detailed explanation only in a handful of involved papers &lt;a class=&quot;citation&quot; href=&quot;#ho2020denoising&quot;&gt;(Ho et al., 2020; Sohl-Dickstein et al., 2015)&lt;/a&gt;. So I hope this post will provide a general understanding to a broader audience.&lt;/p&gt;
+<!-- end SEO -->
 
-&lt;h2 id=&quot;high-level-overview&quot;&gt;High-level overview&lt;/h2&gt;
-&lt;p&gt;Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), with a model parameterized by \(\theta\),&lt;/p&gt;
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+
+<div id="main" role="main">
+  
+
+  <article>
+    
+
+    <div class="page__inner-wrap">
+            
+
+      <section class="page__content" itemprop="text">
+        <p>The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.</p>
+
+<p>In the first half of 2021, a few papers popped up on arXiv claiming that a new method, motivated by non-equilibrium statistical physics <a class="citation" href="#sohl2015deep">(Sohl-Dickstein et al., 2015)</a>, achieved sample qualities better than contemporary state-of-the-art models. Here are some generated samples taken directly from these papers.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/files/images/ddpm/imagenet.png" alt="imagenet" /></th>
+      <th style="text-align: center"><img src="/files/images/ddpm/pointcloud.png" alt="pointcloud" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><em>ImageNet 256 <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021)</a></em></td>
+      <td style="text-align: center"><em>ShapeNet dataset <a class="citation" href="#luo2021diffusion">(Luo &amp; Hu, 2021)</a></em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I read about denoising diffusion probabilistic models (DDPM) while preparing to present to my colleagues at our weekly <a href="https://www.cl.cam.ac.uk/research/rainbow/readingclub/">Rainbow ML reading group</a>. I spent more time than I routinely would since some derivations were not easy to follow. Moreover, you can find a detailed explanation only in a handful of involved papers <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Sohl-Dickstein et al., 2015)</a>. So I hope this post will provide a general understanding to a broader audience.</p>
+
+<h2 id="high-level-overview">High-level overview</h2>
+<p>Given a data sample \(\boldsymbol{x_0}\), DDPM attempts to model the data distribution by introducing \(T\) latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\), with a model parameterized by \(\theta\),</p>
 
 \[\begin{aligned}
-  p_\theta(\boldsymbol{x}) &amp;amp;= \int p_\theta(\boldsymbol{x}_{0:T}) \, d\boldsymbol{x}_{1:T} \\
-  &amp;amp;= \int p_\theta(\boldsymbol{x}_T) \prod \limits_{t=1}^T p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) \, d\boldsymbol{x}_{1:T}\,
+  p_\theta(\boldsymbol{x}) &amp;= \int p_\theta(\boldsymbol{x}_{0:T}) \, d\boldsymbol{x}_{1:T} \\
+  &amp;= \int p_\theta(\boldsymbol{x}_T) \prod \limits_{t=1}^T p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) \, d\boldsymbol{x}_{1:T}\,
 \end{aligned}\]
 
-&lt;p&gt;where \(d\boldsymbol{x}_{1:T}\) is just \(d\boldsymbol{x}_1 d\boldsymbol{x}_2 ... d\boldsymbol{x}_T\). Here, the factorization of the joint distribution is possible since the model is given by the following Markov chain,&lt;/p&gt;
+<p>where \(d\boldsymbol{x}_{1:T}\) is just \(d\boldsymbol{x}_1 d\boldsymbol{x}_2 ... d\boldsymbol{x}_T\). Here, the factorization of the joint distribution is possible since the model is given by the following Markov chain,</p>
 
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/files/images/ddpm/pgm.png&quot; alt=&quot;Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles.&quot; /&gt;
-  &lt;figcaption&gt;Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles.&lt;/figcaption&gt;
-&lt;/figure&gt;
+<figure class="image">
+  <img src="/files/images/ddpm/pgm.png" alt="Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles." />
+  <figcaption>Graphical model for diffusion methods. The convention is to represent latent variables with white circles and observed variables with grey shaded circles.</figcaption>
+</figure>
 
-&lt;p&gt;To optimize our parametric model, we would like to compute the exact marginal likelihood and maximize it. Unfortunately, the exact likelihood (given by the above integral) is not tractable, and we are forced to resort to a variational approximation. During my first pass of a DDPM paper &lt;a class=&quot;citation&quot; href=&quot;#dhariwal2021diffusion&quot;&gt;(Dhariwal &amp;amp; Nichol, 2021)&lt;/a&gt;, I found this part particularly hard to follow and was forced to backtrack and read some earlier works. In this post, we will see how to start with the objective of minimizing a divergence between the approximate and true posterior, and pry out the evidence lower bound (ELBO). This is, of course, variational inference, and just in case you need a reminder (or are hearing about it for the first time), here is a brief outline of how it is typically carried out.&lt;/p&gt;
+<p>To optimize our parametric model, we would like to compute the exact marginal likelihood and maximize it. Unfortunately, the exact likelihood (given by the above integral) is not tractable, and we are forced to resort to a variational approximation. During my first pass of a DDPM paper <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021)</a>, I found this part particularly hard to follow and was forced to backtrack and read some earlier works. In this post, we will see how to start with the objective of minimizing a divergence between the approximate and true posterior, and pry out the evidence lower bound (ELBO). This is, of course, variational inference, and just in case you need a reminder (or are hearing about it for the first time), here is a brief outline of how it is typically carried out.</p>
 
-&lt;h2 id=&quot;a-primer-on-variational-inference&quot;&gt;A primer on variational inference&lt;/h2&gt;
-&lt;p&gt;The forward model is often quite simple, consisting of a single latent and a single observed variable. This results in a very simple graphical model,&lt;/p&gt;
+<h2 id="a-primer-on-variational-inference">A primer on variational inference</h2>
+<p>The forward model is often quite simple, consisting of a single latent and a single observed variable. This results in a very simple graphical model,</p>
 
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/files/images/ddpm/vi_pgm.png&quot; alt=&quot;We stick to the same conventions, using white circles for latent and grey circles for observed variables.&quot; /&gt;
-  &lt;figcaption&gt;We stick to the same conventions, using white circles for latent and grey circles for observed variables.&lt;/figcaption&gt;
-&lt;/figure&gt;
+<figure class="image">
+  <img src="/files/images/ddpm/vi_pgm.png" alt="We stick to the same conventions, using white circles for latent and grey circles for observed variables." />
+  <figcaption>We stick to the same conventions, using white circles for latent and grey circles for observed variables.</figcaption>
+</figure>
 
-&lt;p&gt;The posterior \(p(\boldsymbol{z} \vert \boldsymbol{x})\) is, in general, intractable and we resort to using an approximation \(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\), parameterized by \(\phi\). We optimize \(\phi\) by minimizing the KL-divergence between our approximate distribution and the true posterior \(D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x}) \, \| \, p(\boldsymbol{z} \vert \boldsymbol{x}))\). It turns out that this is equivalent to maximizing the evidence lower bound (ELBO) given by,&lt;/p&gt;
+<p>The posterior \(p(\boldsymbol{z} \vert \boldsymbol{x})\) is, in general, intractable and we resort to using an approximation \(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\), parameterized by \(\phi\). We optimize \(\phi\) by minimizing the KL-divergence between our approximate distribution and the true posterior \(D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x}) \, \| \, p(\boldsymbol{z} \vert \boldsymbol{x}))\). It turns out that this is equivalent to maximizing the evidence lower bound (ELBO) given by,</p>
 
 \[\textrm{ELBO} = \mathbb{E}_{\boldsymbol{z} \sim q_\phi(\boldsymbol{z} \vert \boldsymbol{x})} \left[\log{p(\boldsymbol{x} \vert \boldsymbol{z})} - D_\textrm{KL}(q_\phi(\boldsymbol{z} \vert \boldsymbol{x})\,||\,p(\boldsymbol{z}))\right]\,.\]
 
-&lt;p&gt;To better understand what is happening, an analogy I like using is that of trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. However, it is important to note that these are approximations at best. The final step is assigning a mapping between certain mental states and certain observed behaviors based on real-world interactions, a process that is roughly equivalent to learning model parameters from data. We &lt;em&gt;learn to infer&lt;/em&gt; that when a cat sits on our keyboards, it might be “craving attention” or that a dog wagging its tail is “most likely happy”.&lt;/p&gt;
+<p>To better understand what is happening, an analogy I like using is that of trying to guess the mental state \(\boldsymbol{z}\) of a cat (or a dog if you prefer) based solely on its observed behavior \(\boldsymbol{x}\). None of us have any experience of being a cat and thus, have no priors about its mental states given its behavior \(p(\boldsymbol{z} \vert \boldsymbol{x})\). Instead, we anthropomorphize our furry friends and try to assign human-like mental states \(q(\boldsymbol{z} \vert \boldsymbol{x})\) because we know how to model these. However, it is important to note that these are approximations at best. The final step is assigning a mapping between certain mental states and certain observed behaviors based on real-world interactions, a process that is roughly equivalent to learning model parameters from data. We <em>learn to infer</em> that when a cat sits on our keyboards, it might be “craving attention” or that a dog wagging its tail is “most likely happy”.</p>
 
-&lt;p&gt;I do not want to detail the derivation of obtaining the ELBO for the simple model described above since you can find several lecture notes and blog posts on it. Feel free to refer to them before reading on. In the rest of this post, I will elucidate how to do so for diffusion models.&lt;/p&gt;
+<p>I do not want to detail the derivation of obtaining the ELBO for the simple model described above since you can find several lecture notes and blog posts on it. Feel free to refer to them before reading on. In the rest of this post, I will elucidate how to do so for diffusion models.</p>
 
-&lt;h2 id=&quot;forward-diffusion-process&quot;&gt;Forward diffusion process&lt;/h2&gt;
-&lt;p&gt;To better motivate the diffusion process, DDPM papers flip the “direction”. As a result, this is the picture you will see in most related work:&lt;/p&gt;
+<h2 id="forward-diffusion-process">Forward diffusion process</h2>
+<p>To better motivate the diffusion process, DDPM papers flip the “direction”. As a result, this is the picture you will see in most related work:</p>
 
-&lt;figure class=&quot;image&quot;&gt;
-  &lt;img src=&quot;/files/images/ddpm/ddpm.png&quot; alt=&quot;The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes.&quot; /&gt;
-  &lt;figcaption&gt;The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes.&lt;/figcaption&gt;
-&lt;/figure&gt;
+<figure class="image">
+  <img src="/files/images/ddpm/ddpm.png" alt="The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes." />
+  <figcaption>The forward (above using red arrows) and reverse (below using blue arrows) diffusion processes.</figcaption>
+</figure>
 
-&lt;p&gt;The forward process starts with an image taken from the training set and degrades it by iteratively adding small quantities of noise. The exact distribution of noise is known beforehand. After infinite iterations, all the information in the image is lost, and we are left with random noise. Formally, the forward &lt;em&gt;diffusion&lt;/em&gt; process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\). This is a well-defined process given by&lt;/p&gt;
+<p>The forward process starts with an image taken from the training set and degrades it by iteratively adding small quantities of noise. The exact distribution of noise is known beforehand. After infinite iterations, all the information in the image is lost, and we are left with random noise. Formally, the forward <em>diffusion</em> process refers to extracting latents \(\boldsymbol{x}_1, \boldsymbol{x}_2, ..., \boldsymbol{x}_T\) from a given data sample \(\boldsymbol{x}_0 \sim q(\boldsymbol{x}_0)\). This is a well-defined process given by</p>
 
 \[q(\boldsymbol{x}_t \vert \boldsymbol{x}_{t-1}) = \mathcal{N}(\boldsymbol{x}_t;\, \sqrt{1 - \beta_t}\boldsymbol{x}_{t-1}, \beta_t \mathbf{I}) \,.\]
 
-&lt;p&gt;Here \(\beta_t\) is provided by a predetermined variance schedule. After a large number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, &lt;a class=&quot;citation&quot; href=&quot;#nichol2021improved&quot;&gt;(Nichol &amp;amp; Dhariwal, 2021)&lt;/a&gt; show that between 1000 and 4000 steps are sufficient even for a complex distribution such as ImageNet.&lt;/p&gt;
+<p>Here \(\beta_t\) is provided by a predetermined variance schedule. After a large number of such diffusion steps, the final latent follows a standard Gaussian distribution \(\boldsymbol{x}_T \sim \mathcal{N}(0, \mathbf{I})\), from which we know how to efficiently sample. In practice, <a class="citation" href="#nichol2021improved">(Nichol &amp; Dhariwal, 2021)</a> show that between 1000 and 4000 steps are sufficient even for a complex distribution such as ImageNet.</p>
 
-&lt;h2 id=&quot;reverse-diffusion-process&quot;&gt;Reverse diffusion process&lt;/h2&gt;
-&lt;p&gt;The reverse process of generating a new sample boils down to inverting all diffusion steps each given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\). Take a minute to realize that each inversion requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. While the forward process takes as input a slightly noisy image and adds a small amount of additional noise, the reverse inverts this operation. It should be obvious that estimating and removing the noise added in a diffusion step is a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available before training since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.&lt;/p&gt;
+<h2 id="reverse-diffusion-process">Reverse diffusion process</h2>
+<p>The reverse process of generating a new sample boils down to inverting all diffusion steps each given by the posterior \(q(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t, \boldsymbol{x}_0)\). Take a minute to realize that each inversion requires knowledge of the original data distribution. To understand why it helps to pay attention to a single diffusion step in isolation. While the forward process takes as input a slightly noisy image and adds a small amount of additional noise, the reverse inverts this operation. It should be obvious that estimating and removing the noise added in a diffusion step is a significantly more challenging task. To successfully reduce noise in an image, the model used should have a good prior of how noise-free images appear. Obviously, this is not available before training since \(q(\boldsymbol{x}_0)\) is precisely what we are interested in obtaining.</p>
 
-&lt;p&gt;The choice of the forward diffusion operation, however, ensures that the posterior of each step is Gaussian, enabling us to easily approximate it. The Gaussian has only two parameters that need to be estimated and we do so with a model parameterized by \(\theta\),&lt;/p&gt;
+<p>The choice of the forward diffusion operation, however, ensures that the posterior of each step is Gaussian, enabling us to easily approximate it. The Gaussian has only two parameters that need to be estimated and we do so with a model parameterized by \(\theta\),</p>
 
 \[p_\theta(\boldsymbol{x}_{t-1} \vert \boldsymbol{x}_t) = \mathcal{N}(\boldsymbol{x}_t;\, \boldsymbol{\mu}_\theta(\boldsymbol{x}_t, t), \boldsymbol{\Sigma}_\theta(\boldsymbol{x}_t))\]
 
-&lt;p&gt;This description is slightly different from the typical variational inference setup where an approximate model is used to obtain &lt;em&gt;latents given the data&lt;/em&gt;. Here, the approximate model provides &lt;em&gt;the data given the latents&lt;/em&gt;. The procedure remains the same—obtain a lower bound on the marginal log-likelihood of the data and update the parameters of a model to maximize it.&lt;/p&gt;
+<p>This description is slightly different from the typical variational inference setup where an approximate model is used to obtain <em>latents given the data</em>. Here, the approximate model provides <em>the data given the latents</em>. The procedure remains the same—obtain a lower bound on the marginal log-likelihood of the data and update the parameters of a model to maximize it.</p>
 
-&lt;h2 id=&quot;evidence-lower-bound&quot;&gt;Evidence lower bound&lt;/h2&gt;
-&lt;p&gt;Generally, latent variable models approximate the posterior of the latents, \(p(\boldsymbol{x}_{1:T}|\boldsymbol{x}_0)\) with a parameterized function. However, as we saw in the previous section, this approximation is predetermined when using diffusion methods. Instead, we learn the inversion of this process, \(p_\theta(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})\) using the ELBO. Pay attention to the fact that the parameterization is now on the generative probability while the “approximate” posterior probability is well-defined. To derive the ELBO, we start with the objective of minimizing the KL-divergence between the approximate and true posteriors,&lt;/p&gt;
+<h2 id="evidence-lower-bound">Evidence lower bound</h2>
+<p>Generally, latent variable models approximate the posterior of the latents, \(p(\boldsymbol{x}_{1:T}|\boldsymbol{x}_0)\) with a parameterized function. However, as we saw in the previous section, this approximation is predetermined when using diffusion methods. Instead, we learn the inversion of this process, \(p_\theta(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})\) using the ELBO. Pay attention to the fact that the parameterization is now on the generative probability while the “approximate” posterior probability is well-defined. To derive the ELBO, we start with the objective of minimizing the KL-divergence between the approximate and true posteriors,</p>
 
 \[\begin{aligned}
   D_{KL} (q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \, \| \, p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0))
-  &amp;amp;= \mathbb{E} _q \left[ \log \frac{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right] \\
-  &amp;amp;= \mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{0:T})} \cdot q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \right] \\
-  \implies \log p_\theta(\boldsymbol{x}_0) &amp;amp;= \underbrace{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right]}_\textrm{ELBO} + \underbrace{\vphantom{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})} \right]} D_{KL} (q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \, \| \, p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0))}_\textrm{non-negative divergence}
+  &amp;= \mathbb{E} _q \left[ \log \frac{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right] \\
+  &amp;= \mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_0)}{p_\theta(\boldsymbol{x}_{0:T})} \cdot q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \right] \\
+  \implies \log p_\theta(\boldsymbol{x}_0) &amp;= \underbrace{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0)} \right]}_\textrm{ELBO} + \underbrace{\vphantom{\mathbb{E}_q \left[ \log \frac{p_\theta(\boldsymbol{x}_{0:T})}{q(\boldsymbol{x}_0|\boldsymbol{x}_{1:T})} \right]} D_{KL} (q(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0) \, \| \, p_\theta(\boldsymbol{x}_{1:T} \vert \boldsymbol{x}_0))}_\textrm{non-negative divergence}
 \end{aligned}\]
 
-&lt;p&gt;where we obtained the final step by extracting the marginal log-likelihood (since it does not depend on \(q\)), flipping the fraction inside the log function, and rearranging. The ELBO turns out to be a summation of several terms,&lt;/p&gt;
+<p>where we obtained the final step by extracting the marginal log-likelihood (since it does not depend on \(q\)), flipping the fraction inside the log function, and rearranging. The ELBO turns out to be a summation of several terms,</p>
 
 \[\begin{aligned}
-  -\textrm{ELBO} &amp;amp;= -\mathbb{E}_q \left[ \log \frac{p(\boldsymbol{x}_T) p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) \prod_{t=2}^T p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_1 | \boldsymbol{x}_0) \prod_{t=2}^T q(\boldsymbol{x}_t | \boldsymbol{x}_{t-1}, \boldsymbol{x}_0)} \right] \\
-  &amp;amp;= -\mathbb{E}_q \left[ \log \frac{(\boldsymbol{x}_T) p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1)}{q(\boldsymbol{x}_1 | \boldsymbol{x}_0)} + \sum \limits_{t=2}^T \log \frac{p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0)} \cdot \frac{q(\boldsymbol{x}_{t-1}, \boldsymbol{x}_0)}{q(\boldsymbol{x}_t, \boldsymbol{x}_0)} \right] \,\, \text{(Bayes' rule)} \\
-  &amp;amp;= -\mathbb{E}_q \left[ \log p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) + \sum \limits_{t=2}^T \log \frac{p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0)} + \frac{p(\boldsymbol{x}_T)}{q(\boldsymbol{x}_T | \boldsymbol{x}_0)} \right] \\
-  &amp;amp;= \underbrace{\vphantom{\sum \limits_{t=2}^T} -\mathbb{E}_q \left[ \log p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) \right]}_{L_0} + \underbrace{\sum \limits_{t=2}^T D_\textrm{KL}(q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0) \, || \, p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t))}_{L_1, L_2, ..., L_{T-1}} + \underbrace{\vphantom{\sum \limits_{t=2}^T} D_\textrm{KL}(q(\boldsymbol{x}_T | \boldsymbol{x}_0) \, || \, p(\boldsymbol{x}_T))}_{L_T} \,.
+  -\textrm{ELBO} &amp;= -\mathbb{E}_q \left[ \log \frac{p(\boldsymbol{x}_T) p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) \prod_{t=2}^T p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_1 | \boldsymbol{x}_0) \prod_{t=2}^T q(\boldsymbol{x}_t | \boldsymbol{x}_{t-1}, \boldsymbol{x}_0)} \right] \\
+  &amp;= -\mathbb{E}_q \left[ \log \frac{(\boldsymbol{x}_T) p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1)}{q(\boldsymbol{x}_1 | \boldsymbol{x}_0)} + \sum \limits_{t=2}^T \log \frac{p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0)} \cdot \frac{q(\boldsymbol{x}_{t-1}, \boldsymbol{x}_0)}{q(\boldsymbol{x}_t, \boldsymbol{x}_0)} \right] \,\, \text{(Bayes' rule)} \\
+  &amp;= -\mathbb{E}_q \left[ \log p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) + \sum \limits_{t=2}^T \log \frac{p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t)}{q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0)} + \frac{p(\boldsymbol{x}_T)}{q(\boldsymbol{x}_T | \boldsymbol{x}_0)} \right] \\
+  &amp;= \underbrace{\vphantom{\sum \limits_{t=2}^T} -\mathbb{E}_q \left[ \log p_\theta(\boldsymbol{x}_0 | \boldsymbol{x}_1) \right]}_{L_0} + \underbrace{\sum \limits_{t=2}^T D_\textrm{KL}(q(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t, \boldsymbol{x}_0) \, || \, p_\theta(\boldsymbol{x}_{t-1} | \boldsymbol{x}_t))}_{L_1, L_2, ..., L_{T-1}} + \underbrace{\vphantom{\sum \limits_{t=2}^T} D_\textrm{KL}(q(\boldsymbol{x}_T | \boldsymbol{x}_0) \, || \, p(\boldsymbol{x}_T))}_{L_T} \,.
 \end{aligned}\]
 
-&lt;p&gt;The formulation of diffusion models means that each intermediate probability \(p_\theta(\boldsymbol{x}_t)\), as well as \(q(\boldsymbol{x}_t)\). is a Gaussian. The final loss \(L = \Sigma_{t=0}^TL_t\) is thus a sum of many terms where all but one are KL-divergences between Gaussians. There are a few more caveats to optimizing this loss, but you will have to look at the papers for details &lt;a class=&quot;citation&quot; href=&quot;#ho2020denoising&quot;&gt;(Ho et al., 2020; Nichol &amp;amp; Dhariwal, 2021)&lt;/a&gt;.&lt;/p&gt;
+<p>The formulation of diffusion models means that each intermediate probability \(p_\theta(\boldsymbol{x}_t)\), as well as \(q(\boldsymbol{x}_t)\). is a Gaussian. The final loss \(L = \Sigma_{t=0}^TL_t\) is thus a sum of many terms where all but one are KL-divergences between Gaussians. There are a few more caveats to optimizing this loss, but you will have to look at the papers for details <a class="citation" href="#ho2020denoising">(Ho et al., 2020; Nichol &amp; Dhariwal, 2021)</a>.</p>
 
-&lt;h2 id=&quot;practical-considerations&quot;&gt;Practical considerations&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;Since each diffusion step adds Gaussian noise according to a predetermined schedule and Gaussians are closed under multiplication, we can directly sample an intermediate noisy image from \(q(\boldsymbol{x}_t \vert \boldsymbol{x}_0)\). Not having to iteratively perform every diffusion step vastly speeds up training.&lt;/li&gt;
-  &lt;li&gt;For generating new data after training, earlier papers recommended starting with a randomly drawn sample and going through the entire reverse diffusion operation iteratively. However, recent works  &lt;a class=&quot;citation&quot; href=&quot;#song2020denoising&quot;&gt;(Song et al., 2020; Nichol &amp;amp; Dhariwal, 2021)&lt;/a&gt; demonstrate that this is not essential, and high-quality novel samples can be obtained with as few as 50 diffusion steps.&lt;/li&gt;
-  &lt;li&gt;The best results, with the highest likelihoods, are class-conditional samples. A few different approaches for conditioning &lt;a class=&quot;citation&quot; href=&quot;#dhariwal2021diffusion&quot;&gt;(Dhariwal &amp;amp; Nichol, 2021; Luo &amp;amp; Hu, 2021)&lt;/a&gt; are possible.&lt;/li&gt;
-&lt;/ul&gt;
+<h2 id="practical-considerations">Practical considerations</h2>
+<ul>
+  <li>Since each diffusion step adds Gaussian noise according to a predetermined schedule and Gaussians are closed under multiplication, we can directly sample an intermediate noisy image from \(q(\boldsymbol{x}_t \vert \boldsymbol{x}_0)\). Not having to iteratively perform every diffusion step vastly speeds up training.</li>
+  <li>For generating new data after training, earlier papers recommended starting with a randomly drawn sample and going through the entire reverse diffusion operation iteratively. However, recent works  <a class="citation" href="#song2020denoising">(Song et al., 2020; Nichol &amp; Dhariwal, 2021)</a> demonstrate that this is not essential, and high-quality novel samples can be obtained with as few as 50 diffusion steps.</li>
+  <li>The best results, with the highest likelihoods, are class-conditional samples. A few different approaches for conditioning <a class="citation" href="#dhariwal2021diffusion">(Dhariwal &amp; Nichol, 2021; Luo &amp; Hu, 2021)</a> are possible.</li>
+</ul>
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;ol class=&quot;bibliography&quot;&gt;&lt;li&gt;&lt;span id=&quot;sohl2015deep&quot;&gt;Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., &amp;amp; Ganguli, S. (2015). Deep unsupervised learning using nonequilibrium thermodynamics. &lt;i&gt;International Conference on Machine Learning&lt;/i&gt;, 2256–2265.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span id=&quot;dhariwal2021diffusion&quot;&gt;Dhariwal, P., &amp;amp; Nichol, A. (2021). Diffusion models beat gans on image synthesis. &lt;i&gt;ArXiv Preprint ArXiv:2105.05233&lt;/i&gt;.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span id=&quot;luo2021diffusion&quot;&gt;Luo, S., &amp;amp; Hu, W. (2021). Diffusion probabilistic models for 3d point cloud generation. &lt;i&gt;Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition&lt;/i&gt;, 2837–2845.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span id=&quot;ho2020denoising&quot;&gt;Ho, J., Jain, A., &amp;amp; Abbeel, P. (2020). Denoising diffusion probabilistic models. &lt;i&gt;ArXiv Preprint ArXiv:2006.11239&lt;/i&gt;.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span id=&quot;nichol2021improved&quot;&gt;Nichol, A., &amp;amp; Dhariwal, P. (2021). Improved denoising diffusion probabilistic models. &lt;i&gt;ArXiv Preprint ArXiv:2102.09672&lt;/i&gt;.&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span id=&quot;song2020denoising&quot;&gt;Song, J., Meng, C., &amp;amp; Ermon, S. (2020). Denoising diffusion implicit models. &lt;i&gt;ArXiv Preprint ArXiv:2010.02502&lt;/i&gt;.&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;</content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><category term="stochastic diffusion models" /><category term="deep generative models" /><category term="evidence lower bound" /><summary type="html">The majority of deep generative models proposed in the last few years have broadly fallen under three categories—generative adversarial networks (GANs), variational autoencoders (VAEs), and normalizing flows. There are few others, such as autoregressive models and those based on transformers, but they are much slower to sample. As a result, they are not widely used, particularly when the distribution being modeled is very high-dimensional.</summary></entry><entry><title type="html">Least Squares</title><link href="https://paramhanji.github.io/posts/2021/02/least-squares/" rel="alternate" type="text/html" title="Least Squares" /><published>2021-02-06T00:00:00+00:00</published><updated>2021-02-06T00:00:00+00:00</updated><id>https://paramhanji.github.io/posts/2021/02/least-squares</id><content type="html" xml:base="https://paramhanji.github.io/posts/2021/02/least-squares/">&lt;p&gt;&lt;a href=&quot;https://towardsdatascience.com/least-squares-6ee18abfea24&quot;&gt;Here’s&lt;/a&gt; a little piece on the different pictures of linear least squares I wrote for towardsdatascience. All the code used to generate the plots can be found in this &lt;a href=&quot;https://github.com/paramhanji/regression&quot;&gt;github repo&lt;/a&gt;.&lt;/p&gt;</content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><category term="ordinary least squares" /><category term="linear regression" /><category term="generalized least squares" /><category term="maximum likelihood estimation" /><summary type="html">Here’s a little piece on the different pictures of linear least squares I wrote for towardsdatascience. All the code used to generate the plots can be found in this github repo.</summary></entry><entry><title type="html">GSoC</title><link href="https://paramhanji.github.io/posts/2016/08/gsoc/" rel="alternate" type="text/html" title="GSoC" /><published>2016-08-21T00:00:00+01:00</published><updated>2016-08-21T00:00:00+01:00</updated><id>https://paramhanji.github.io/posts/2016/08/gsoc</id><content type="html" xml:base="https://paramhanji.github.io/posts/2016/08/gsoc/">&lt;p&gt;Back in 2016, I took part in a large open-source program called Google Summer of Code or &lt;a href=&quot;https://summerofcode.withgoogle.com/&quot;&gt;GSoC&lt;/a&gt;. Specifically, I worked with an organization called &lt;a href=&quot;https://brlcad.org/&quot;&gt;BRL-CAD&lt;/a&gt; which specialised in a computer-aided design (CAD) software. &lt;a href=&quot;https://summerofcode.withgoogle.com/archive/2016/projects/4727606599483392&quot;&gt;Here&lt;/a&gt; is the official project page from GSoC archives.&lt;/p&gt;
+<h2 id="references">References</h2>
+<ol class="bibliography"><li><span id="sohl2015deep">Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., &amp; Ganguli, S. (2015). Deep unsupervised learning using nonequilibrium thermodynamics. <i>International Conference on Machine Learning</i>, 2256–2265.</span></li>
+<li><span id="dhariwal2021diffusion">Dhariwal, P., &amp; Nichol, A. (2021). Diffusion models beat gans on image synthesis. <i>ArXiv Preprint ArXiv:2105.05233</i>.</span></li>
+<li><span id="luo2021diffusion">Luo, S., &amp; Hu, W. (2021). Diffusion probabilistic models for 3d point cloud generation. <i>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition</i>, 2837–2845.</span></li>
+<li><span id="ho2020denoising">Ho, J., Jain, A., &amp; Abbeel, P. (2020). Denoising diffusion probabilistic models. <i>ArXiv Preprint ArXiv:2006.11239</i>.</span></li>
+<li><span id="nichol2021improved">Nichol, A., &amp; Dhariwal, P. (2021). Improved denoising diffusion probabilistic models. <i>ArXiv Preprint ArXiv:2102.09672</i>.</span></li>
+<li><span id="song2020denoising">Song, J., Meng, C., &amp; Ermon, S. (2020). Denoising diffusion implicit models. <i>ArXiv Preprint ArXiv:2010.02502</i>.</span></li></ol>
 
-&lt;h2 id=&quot;rendering-primitives&quot;&gt;Rendering primitives&lt;/h2&gt;
-&lt;p&gt;For my GSoC project, I proposed to improve OpenCL support for the BRL-CAD raytracer. I successfully accelerated the rendering of a few primitive shapes such as EPA (elliptical parabolloid), ETO (elliptical torus), PART (lozenge shaped object).&lt;/p&gt;
+        
+      </section>
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/files/images/gsoc_eto.png&quot; alt=&quot;ETO&quot; /&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/files/images/gsoc_part.png&quot; alt=&quot;PART&quot; /&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Primitive ETO rendered by the OpenCL raytracer&lt;/em&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Primitive PART rendered by the OpenCL raytracer&lt;/em&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+      <footer class="page__meta">
+        
+        
 
-&lt;h2 id=&quot;rendering-more-complex-objects&quot;&gt;Rendering more complex objects&lt;/h2&gt;
 
-&lt;p&gt;Subsequently, I reimplemented a boolean weaving algortihm to combine multiple primitives to yield more complex shapes. Boolean operations include Union, Intersection and Difference.&lt;/p&gt;
+  
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/files/images/gsoc_complex.png&quot; alt=&quot;Complex&quot; /&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Complex object by combining primitives using boolean weaving&lt;/em&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 
-&lt;p&gt;For more information, navigate to my &lt;a href=&quot;https://catchchaos.wordpress.com/&quot;&gt;weekly logs&lt;/a&gt;.&lt;/p&gt;</content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><category term="google summer of code" /><category term="open source" /><category term="ray tracing" /><summary type="html">Back in 2016, I took part in a large open-source program called Google Summer of Code or GSoC. Specifically, I worked with an organization called BRL-CAD which specialised in a computer-aided design (CAD) software. Here is the official project page from GSoC archives.</summary></entry></feed>
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://paramhanji.github.io/tags/#deep-generative-models" class="page__taxonomy-item" rel="tag">deep generative models</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://paramhanji.github.io/tags/#evidence-lower-bound" class="page__taxonomy-item" rel="tag">evidence lower bound</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://paramhanji.github.io/tags/#stochastic-diffusion-models" class="page__taxonomy-item" rel="tag">stochastic diffusion models</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+    </div>
+
+    
+  </article>
+
+    
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/paramhanji"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="https://paramhanji.github.io/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Param Hanji. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://paramhanji.github.io/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>]]></content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Least Squares</title><link href="https://paramhanji.github.io/posts/2021/02/least-squares/" rel="alternate" type="text/html" title="Least Squares" /><published>2021-02-06T00:00:00+00:00</published><updated>2021-02-06T00:00:00+00:00</updated><id>https://paramhanji.github.io/posts/2021/02/least-squares</id><content type="html" xml:base="https://paramhanji.github.io/posts/2021/02/least-squares/"><![CDATA[<p><a href="https://towardsdatascience.com/least-squares-6ee18abfea24">Here’s</a> a little piece on the different pictures of linear least squares I wrote for towardsdatascience. All the code used to generate the plots can be found in this <a href="https://github.com/paramhanji/regression">github repo</a>.</p>]]></content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><category term="ordinary least squares" /><category term="linear regression" /><category term="generalized least squares" /><category term="maximum likelihood estimation" /><summary type="html"><![CDATA[Here’s a little piece on the different pictures of linear least squares I wrote for towardsdatascience. All the code used to generate the plots can be found in this github repo.]]></summary></entry><entry><title type="html">GSoC</title><link href="https://paramhanji.github.io/posts/2016/08/gsoc/" rel="alternate" type="text/html" title="GSoC" /><published>2016-08-21T00:00:00+01:00</published><updated>2016-08-21T00:00:00+01:00</updated><id>https://paramhanji.github.io/posts/2016/08/gsoc</id><content type="html" xml:base="https://paramhanji.github.io/posts/2016/08/gsoc/"><![CDATA[<p>Back in 2016, I took part in a large open-source program called Google Summer of Code or <a href="https://summerofcode.withgoogle.com/">GSoC</a>. Specifically, I worked with an organization called <a href="https://brlcad.org/">BRL-CAD</a> which specialised in a computer-aided design (CAD) software. <a href="https://summerofcode.withgoogle.com/archive/2016/projects/4727606599483392">Here</a> is the official project page from GSoC archives.</p>
+
+<h2 id="rendering-primitives">Rendering primitives</h2>
+<p>For my GSoC project, I proposed to improve OpenCL support for the BRL-CAD raytracer. I successfully accelerated the rendering of a few primitive shapes such as EPA (elliptical parabolloid), ETO (elliptical torus), PART (lozenge shaped object).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/files/images/gsoc_eto.png" alt="ETO" /></th>
+      <th style="text-align: center"><img src="/files/images/gsoc_part.png" alt="PART" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><em>Primitive ETO rendered by the OpenCL raytracer</em></td>
+      <td style="text-align: center"><em>Primitive PART rendered by the OpenCL raytracer</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="rendering-more-complex-objects">Rendering more complex objects</h2>
+
+<p>Subsequently, I reimplemented a boolean weaving algortihm to combine multiple primitives to yield more complex shapes. Boolean operations include Union, Intersection and Difference.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/files/images/gsoc_complex.png" alt="Complex" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><em>Complex object by combining primitives using boolean weaving</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For more information, navigate to my <a href="https://catchchaos.wordpress.com/">weekly logs</a>.</p>]]></content><author><name>Param Hanji</name><email>param.hanji@cl.cam.ac.uk</email></author><category term="google summer of code" /><category term="open source" /><category term="ray tracing" /><summary type="html"><![CDATA[Back in 2016, I took part in a large open-source program called Google Summer of Code or GSoC. Specifically, I worked with an organization called BRL-CAD which specialised in a computer-aided design (CAD) software. Here is the official project page from GSoC archives.]]></summary></entry></feed>
