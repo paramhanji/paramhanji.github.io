@@ -19,7 +19,7 @@
 
 
 
-<title>Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views - Param Hanji</title>
+<title>ColorVideoVDP: A visual difference predictor for image, video and display distortions - Param Hanji</title>
 
 
 
@@ -29,15 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Param Hanji">
-<meta property="og:title" content="Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views">
+<meta property="og:title" content="ColorVideoVDP: A visual difference predictor for image, video and display distortions">
 
 
-  <link rel="canonical" href="https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark">
-  <meta property="og:url" content="https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark">
+  <link rel="canonical" href="https://paramhanji.github.io/publication/2024-07-19-cvvdp">
+  <meta property="og:url" content="https://paramhanji.github.io/publication/2024-07-19-cvvdp">
 
 
 
-  <meta property="og:description" content="Neural view synthesis (NVS) is one of the most successful techniques for synthesizing free viewpoint videos, capable of achieving high fidelity from only a sparse set of captured images. This success has led to many variants of the techniques, each evaluated on a set of test views typically using image quality metrics such as PSNR, SSIM, or LPIPS. There has been a lack of research on how NVS methods perform with respect to perceived video quality. We present the first study on perceptual evaluation of NVS and NeRF variants. For this study, we collected two datasets of scenes captured in a controlled lab environment as well as in-the-wild. In contrast to existing datasets, these scenes come with reference video sequences, allowing us to test for temporal artifacts and subtle distortions that are easily overlooked when viewing only static images. We measured the quality of videos synthesized by several NVS methods in a well-controlled perceptual quality assessment experiment as well as with many existing state-of-the-art image/video quality metrics. We present a detailed analysis of the results and recommendations for dataset and metric selection for NVS evaluation.">
+  <meta property="og:description" content="ColorVideoVDP is a video and image quality metric that models spatial and temporal aspects of vision for both luminance and color. The metric is built on novel psychophysical models of chromatic spatiotemporal contrast sensitivity and cross-channel contrast masking. It accounts for the viewing conditions, geometric, and photometric characteristics of the display. It was trained to predict common video-streaming distortions (e.g., video compression, rescaling, and transmission errors) and also 8 new distortion types related to AR/VR displays (e.g., light source and waveguide non-uniformities). To address the latter application, we collected our novel XR-Display-Artifact-Video quality dataset (XR-DAVID), comprised of 336 distorted videos. Extensive testing on XR-DAVID, as well as several datasets from the literature, indicate a significant gain in prediction performance compared to existing metrics. ColorVideoVDP opens the doors to many novel applications that require the joint automated spatiotemporal assessment of luminance and color distortions, including video streaming, display specification, and design, visual comparison of results, and perceptually-guided quality optimization.">
 
 
 
@@ -52,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2024-04-22T00:00:00+01:00">
+  <meta property="article:published_time" content="2024-07-19T00:00:00+01:00">
 
 
 
@@ -256,35 +256,35 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views">
-    <meta itemprop="description" content="Neural view synthesis (NVS) is one of the most successful techniques for synthesizing free viewpoint videos, capable of achieving high fidelity from only a sparse set of captured images. This success has led to many variants of the techniques, each evaluated on a set of test views typically using image quality metrics such as PSNR, SSIM, or LPIPS. There has been a lack of research on how NVS methods perform with respect to perceived video quality. We present the first study on perceptual evaluation of NVS and NeRF variants. For this study, we collected two datasets of scenes captured in a controlled lab environment as well as in-the-wild. In contrast to existing datasets, these scenes come with reference video sequences, allowing us to test for temporal artifacts and subtle distortions that are easily overlooked when viewing only static images. We measured the quality of videos synthesized by several NVS methods in a well-controlled perceptual quality assessment experiment as well as with many existing state-of-the-art image/video quality metrics. We present a detailed analysis of the results and recommendations for dataset and metric selection for NVS evaluation.">
-    <meta itemprop="datePublished" content="April 22, 2024">
+    <meta itemprop="headline" content="ColorVideoVDP: A visual difference predictor for image, video and display distortions">
+    <meta itemprop="description" content="ColorVideoVDP is a video and image quality metric that models spatial and temporal aspects of vision for both luminance and color. The metric is built on novel psychophysical models of chromatic spatiotemporal contrast sensitivity and cross-channel contrast masking. It accounts for the viewing conditions, geometric, and photometric characteristics of the display. It was trained to predict common video-streaming distortions (e.g., video compression, rescaling, and transmission errors) and also 8 new distortion types related to AR/VR displays (e.g., light source and waveguide non-uniformities). To address the latter application, we collected our novel XR-Display-Artifact-Video quality dataset (XR-DAVID), comprised of 336 distorted videos. Extensive testing on XR-DAVID, as well as several datasets from the literature, indicate a significant gain in prediction performance compared to existing metrics. ColorVideoVDP opens the doors to many novel applications that require the joint automated spatiotemporal assessment of luminance and color distortions, including video streaming, display specification, and design, visual comparison of results, and perceptually-guided quality optimization.">
+    <meta itemprop="datePublished" content="July 19, 2024">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views
+          <h1 class="page__title" itemprop="headline">ColorVideoVDP: A visual difference predictor for image, video and display distortions
 </h1>
           
         
         
         
-          <p>Published in <i>Eurographics</i>, 2024 </p>
+          <p>Published in <i>ACM SIGGRAPH</i>, 2024 </p>
         
         
              
         
-          <p>Recommended citation: Hanxue Liang, Tianhao Wu, <strong>Param Hanji</strong>, Francesco Banterle, Hongyun Gao, Rafał K. Mantiuk and Cengiz Öztireli. &quot;Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views.&quot; In <i>Computer Graphics Forum</i>. 2024. <a href="https://arxiv.org/abs/2303.15206"><u>https://arxiv.org/abs/2303.15206</u></a></p>
+          <p>Recommended citation: Rafał K. Mantiuk, <strong>Param Hanji</strong>, Maliha Ashraf, Yuta Asano and Alexandre Chapiro. &quot;ColorVideoVDP: A visual difference predictor for image, video and display distortions.&quot; In <i>ACM Transactions on Graphics (TOG), Volume 43, Issue 4</i>. 2024. <a href="https://www.cl.cam.ac.uk/~rkm38/pdfs/mantiuk2024_ColorVideoVDP.pdf"><u>https://www.cl.cam.ac.uk/~rkm38/pdfs/mantiuk2024_ColorVideoVDP.pdf</u></a></p>
         
     
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p>Neural view synthesis (NVS) is one of the most successful techniques for synthesizing free viewpoint videos, capable of achieving high fidelity from only a sparse set of captured images. This success has led to many variants of the techniques, each evaluated on a set of test views typically using image quality metrics such as PSNR, SSIM, or LPIPS. There has been a lack of research on how NVS methods perform with respect to perceived video quality. We present the first study on perceptual evaluation of NVS and NeRF variants. For this study, we collected two datasets of scenes captured in a controlled lab environment as well as in-the-wild. In contrast to existing datasets, these scenes come with reference video sequences, allowing us to test for temporal artifacts and subtle distortions that are easily overlooked when viewing only static images. We measured the quality of videos synthesized by several NVS methods in a well-controlled perceptual quality assessment experiment as well as with many existing state-of-the-art image/video quality metrics. We present a detailed analysis of the results and recommendations for dataset and metric selection for NVS evaluation.</p>
+        <p>ColorVideoVDP is a video and image quality metric that models spatial and temporal aspects of vision for both luminance and color. The metric is built on novel psychophysical models of chromatic spatiotemporal contrast sensitivity and cross-channel contrast masking. It accounts for the viewing conditions, geometric, and photometric characteristics of the display. It was trained to predict common video-streaming distortions (e.g., video compression, rescaling, and transmission errors) and also 8 new distortion types related to AR/VR displays (e.g., light source and waveguide non-uniformities). To address the latter application, we collected our novel XR-Display-Artifact-Video quality dataset (XR-DAVID), comprised of 336 distorted videos. Extensive testing on XR-DAVID, as well as several datasets from the literature, indicate a significant gain in prediction performance compared to existing metrics. ColorVideoVDP opens the doors to many novel applications that require the joint automated spatiotemporal assessment of luminance and color distortions, including video streaming, display specification, and design, visual comparison of results, and perceptually-guided quality optimization.</p>
 
-<p>For further details, find the full paper on <a href="https://arxiv.org/abs/2303.15206">arXiv</a>.</p>
+<p>Code for the metric can be found on <a href="https://github.com/gfxdisp/ColorVideoVDP/">Github</a>. Please see the <a href="https://www.cl.cam.ac.uk/research/rainbow/projects/colorvideovdp/">project page</a> for other details.</p>
 
         
       </section>
@@ -305,11 +305,11 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=https://paramhanji.github.io/publication/2024-07-19-cvvdp" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://paramhanji.github.io/publication/2024-07-19-cvvdp" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://paramhanji.github.io/publication/2024-07-19-cvvdp" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -317,11 +317,11 @@
 
   <nav class="pagination">
     
-      <a href="https://paramhanji.github.io/publication/2023-09-22-cnf" class="pagination--pager" title="Neural Fields with Hard Constraints of Arbitrary Differential Order
+      <a href="https://paramhanji.github.io/publication/2023-03-24-nerf-benchmark" class="pagination--pager" title="Perceptual Quality Assessment of NeRF and Neural View Synthesis Methods for Front-Facing Views
 ">Previous</a>
     
     
-      <a href="https://paramhanji.github.io/publication/2024-07-19-cvvdp" class="pagination--pager" title="ColorVideoVDP: A visual difference predictor for image, video and display distortions
+      <a href="https://paramhanji.github.io/publication/2024-10-01-frepolad" class="pagination--pager" title="FrePolad: Frequency-Rectified Point Latent Diffusion for Point Cloud Generation
 ">Next</a>
     
   </nav>

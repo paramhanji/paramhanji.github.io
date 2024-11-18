@@ -4,20 +4,23 @@ A Github Pages template for academic websites. This was forked (then detached) b
 1. Install [HomeBrew](https://docs.brew.sh/Installation)
 1. Get a ruby installer `brew install chruby ruby-install`
 1. Install the latest ruby and configure shell
-```shell
-ruby-install ruby 3.3.6
-echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
-echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-echo "chruby ruby-3.3.6" >> ~/.zshrc # run 'chruby' to see actual version
-source ~/.zshrc
-```
+    ```shell
+    ruby-install ruby 3.3.6
+    echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+    echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+    echo "chruby ruby-3.3.6" >> ~/.zshrc # run 'chruby' to see actual version
+    source ~/.zshrc
+    ```
 1. Install jekyll and other dependencies `bundle install`
 
 # Update the website
-1. Make changes to HTML or Markdown files
-1. Check the changes by running a local server `rake build:dev`
-1. Compile a static version of the website `rake build:pro`
-1. Commit the changes to Github by running `rake commit_deploy`; then refresh the website after a minute
+Make changes to HTML or Markdown files and then run the following commands
+    ```shell
+    rake build:dev # Check the changes by running a local server
+    rake build:pro # Compile a static version of the website
+    rake commit_deploy # Commit the changes to Github
+    ```
+The [website](https://paramhanji.github.io/) may take upto a minute to refresh
 
 # Original instructions
 

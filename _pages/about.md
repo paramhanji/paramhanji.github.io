@@ -15,6 +15,8 @@ Welcome to my home on the web! I am a Computer Graphics & Vision researcher work
 My research interests span a diverse spectrum, centering on reconstruction problems within Computational Photography, as well as low-level 2D and 3D Computer Vision. Simultaneously, I have also been actively involved in the development of probabilistic generative models and their applications to problems in Graphics and Vision. Yet another direction I have pursued is the automatic assessment of images and videos with quantitative metrics.
 
 # Recent news
+> * Paper on high-frequency <a href="publication/2024-10-01-frepolad" target="_blank">pointcloud generation</a> published at **ICCV 2024**
+> * Full journal paper on <a href="publication/2024-07-19-cvvdp" target="_blank">video and image quality assessment</a> published at **SIGGRAPH 2024**. This work was a collaborative effort with Meta's Reality Labs
 > * Our <a href="publication/2023-03-24-nerf-benchmark" target="_blank">perceptual Nerf benchmark</a> will be presented at **Eurographics 2024**
 > * December 2023: Excited to joined **Apple Research** to work on Camera Algorithms
 > * Thrilled to receive the <a href="https://www.cst.cam.ac.uk/wiseman-prize" target="_blank">Wiseman Prize</a> for 2023
