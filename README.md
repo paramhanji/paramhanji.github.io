@@ -1,5 +1,26 @@
 A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
 
+# MacOS installation (by Param)
+1. Install [HomeBrew](https://docs.brew.sh/Installation)
+1. Get a ruby installer `brew install chruby ruby-install`
+1. Install the latest ruby and configure shell
+```shell
+ruby-install ruby 3.3.6
+echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+echo "chruby ruby-3.3.6" >> ~/.zshrc # run 'chruby' to see actual version
+source ~/.zshrc
+```
+1. Install jekyll and other dependencies `bundle install`
+
+# Update the website
+1. Make changes to HTML or Markdown files
+1. Check the changes by running a local server `rake build:dev`
+1. Compile a static version of the website `rake build:pro`
+1. Commit the changes to Github by running `rake commit_deploy`; then refresh the website after a minute
+
+# Original instructions
+
 I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
 
 ### Note: if you are using this repo and now get a notification about a security vulnerability, delete the Gemfile.lock file. 
